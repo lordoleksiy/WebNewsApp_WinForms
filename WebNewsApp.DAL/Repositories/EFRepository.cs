@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using WebNewsApp.DAL.Interfaces;
@@ -24,15 +25,16 @@ namespace WebNewsApp.DAL.Repositories
             _entities.Add(item);
         }
 
-        public void Delete(TEntity item)
+        public void Delete(int id)
         {
-            if (_entities.Find(item) != null)
+            TEntity item = _entities.Find(id);
+            if (item != null)
             {
                 _entities.Remove(item);
             }
         }
 
-        public TEntity Get(int id)
+        public TEntity GetById(int id)
         {
             return _entities.Find(id);
         }
@@ -45,6 +47,16 @@ namespace WebNewsApp.DAL.Repositories
         public void Update(TEntity item)
         {
             Db.Entry(item).State = EntityState.Modified;
+        }
+
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression)
+        {
+            return _entities.Where(expression).ToList();
+        }
+
+        public int GetCount()
+        {
+            return _entities.Count();
         }
     }
 }

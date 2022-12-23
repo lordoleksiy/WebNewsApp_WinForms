@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNewsApp.DAL", "WebNewsAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{DB350DEE-5DA8-405F-9E05-6957B150C6FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNewsApp.BLL", "WebNewsApp.BLL\WebNewsApp.BLL.csproj", "{703EE08F-A70F-475A-B10E-EC6E16D8EB71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNewsApp.PL", "WebNewsApp\WebNewsApp.PL.csproj", "{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DB350DEE-5DA8-405F-9E05-6957B150C6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB350DEE-5DA8-405F-9E05-6957B150C6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB350DEE-5DA8-405F-9E05-6957B150C6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703EE08F-A70F-475A-B10E-EC6E16D8EB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703EE08F-A70F-475A-B10E-EC6E16D8EB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703EE08F-A70F-475A-B10E-EC6E16D8EB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703EE08F-A70F-475A-B10E-EC6E16D8EB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

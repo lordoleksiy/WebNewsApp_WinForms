@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WebNewsApp.DAL.Models;
 
 namespace WebNewsApp.DAL.Interfaces
 {
@@ -10,8 +7,8 @@ namespace WebNewsApp.DAL.Interfaces
     {
         IRepository<Article> ArticleRepository { get; }
         IRepository<User> UserRepository { get; }
-        IRepository<ArticleCategory> CategoryRepository { get; }
-        IRepository<ArticleTopic> TopicRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        IRepository<ArticleTag> TagRepository { get; }
         void Save();
 
     }

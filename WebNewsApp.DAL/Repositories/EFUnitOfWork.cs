@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WebNewsApp.DAL.Models;
 using WebNewsApp.DAL.Interfaces;
 
 namespace WebNewsApp.DAL.Repositories
@@ -13,8 +10,8 @@ namespace WebNewsApp.DAL.Repositories
         private DataContext Db;
         private EFRepository<Article> articleRepository;
         private EFRepository<User> userRepository;
-        private EFRepository<ArticleCategory> categoryRepository;
-        private EFRepository<ArticleTopic> topicRepository;
+        private CategoryRepository categoryRepository;
+        private EFRepository<ArticleTag> articleTagsRepository;
 
         public EFUnitOfWork()
         {
@@ -43,27 +40,28 @@ namespace WebNewsApp.DAL.Repositories
                 return userRepository;
             }
         }
-        public IRepository<ArticleCategory> CategoryRepository
+        public ICategoryRepository CategoryRepository
         {
             get
             {
                 if (categoryRepository == null)
                 {
-                    categoryRepository = new EFRepository<ArticleCategory>(Db);
+                    categoryRepository = new CategoryRepository(Db);
                 }
                 return categoryRepository;
             }
         }
 
-        public IRepository<ArticleTopic> TopicRepository
+
+        public IRepository<ArticleTag> TagRepository
         {
             get
             {
-                if (topicRepository == null)
+                if (articleTagsRepository != null)
                 {
-                    topicRepository = new EFRepository<ArticleTopic>(Db);
+                    articleTagsRepository = new EFRepository<ArticleTag> (Db);
                 }
-                return topicRepository;
+                return articleTagsRepository;
             }
         }
 

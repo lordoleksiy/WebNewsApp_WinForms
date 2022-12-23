@@ -3,3 +3,4 @@ Test
 WebNewsApp.DAL/Migrations
 WebNewsApp.DAL/App.config
 WebNewsApp.DAL/packages.config
+.vs

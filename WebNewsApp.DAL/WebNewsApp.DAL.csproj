@@ -52,50 +52,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbInitializer.cs" />
+    <Compile Include="Interfaces\ICategoryRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\202211061249117_AddedArticleCategory.cs" />
-    <Compile Include="Migrations\202211061249117_AddedArticleCategory.designer.cs">
-      <DependentUpon>202211061249117_AddedArticleCategory.cs</DependentUpon>
+    <Compile Include="Migrations\202211071557291_InitialCreate.cs" />
+    <Compile Include="Migrations\202211071557291_InitialCreate.designer.cs">
+      <DependentUpon>202211071557291_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211061252401_ChangedFluentApi.cs" />
-    <Compile Include="Migrations\202211061252401_ChangedFluentApi.designer.cs">
-      <DependentUpon>202211061252401_ChangedFluentApi.cs</DependentUpon>
+    <Compile Include="Migrations\202211071615521_ChangedFluentApi.cs" />
+    <Compile Include="Migrations\202211071615521_ChangedFluentApi.designer.cs">
+      <DependentUpon>202211071615521_ChangedFluentApi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212151526191_AddedArticleTag.cs" />
+    <Compile Include="Migrations\202212151526191_AddedArticleTag.designer.cs">
+      <DependentUpon>202212151526191_AddedArticleTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212191429142_addedTextAndHeader.cs" />
+    <Compile Include="Migrations\202212191429142_addedTextAndHeader.designer.cs">
+      <DependentUpon>202212191429142_addedTextAndHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212211410266_UsersArticles.cs" />
+    <Compile Include="Migrations\202212211410266_UsersArticles.designer.cs">
+      <DependentUpon>202212211410266_UsersArticles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212222139530_sonechanges.cs" />
+    <Compile Include="Migrations\202212222139530_sonechanges.designer.cs">
+      <DependentUpon>202212222139530_sonechanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Models\ArticleCategory.cs" />
-    <Compile Include="Models\ArticleTopic.cs" />
+    <Compile Include="Models\ArticleTag.cs" />
+    <Compile Include="Models\ArticleText.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Migrations\202211052000045_InitialMigration.cs" />
-    <Compile Include="Migrations\202211052000045_InitialMigration.designer.cs">
-      <DependentUpon>202211052000045_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ArticleRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\EFUnitOfWork.cs" />
     <Compile Include="Repositories\EFRepository.cs" />
-    <Compile Include="Repositories\TopicRepository.cs" />
-    <Compile Include="Repositories\UserRepostory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202211052000045_InitialMigration.resx">
-      <DependentUpon>202211052000045_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211071557291_InitialCreate.resx">
+      <DependentUpon>202211071557291_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211061249117_AddedArticleCategory.resx">
-      <DependentUpon>202211061249117_AddedArticleCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211071615521_ChangedFluentApi.resx">
+      <DependentUpon>202211071615521_ChangedFluentApi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211061252401_ChangedFluentApi.resx">
-      <DependentUpon>202211061252401_ChangedFluentApi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212151526191_AddedArticleTag.resx">
+      <DependentUpon>202212151526191_AddedArticleTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212191429142_addedTextAndHeader.resx">
+      <DependentUpon>202212191429142_addedTextAndHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212211410266_UsersArticles.resx">
+      <DependentUpon>202212211410266_UsersArticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212222139530_sonechanges.resx">
+      <DependentUpon>202212222139530_sonechanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

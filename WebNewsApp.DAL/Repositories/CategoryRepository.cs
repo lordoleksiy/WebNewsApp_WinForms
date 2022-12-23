@@ -4,42 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebNewsApp.DAL.Interfaces;
+using WebNewsApp.DAL.Models;
 
 namespace WebNewsApp.DAL.Repositories
 {
-    internal class CategoryRepository : IRepository<ArticleCategory>
+    public class CategoryRepository : ICategoryRepository
     {
-        private readonly DataContext DB;
-        public CategoryRepository(DataContext dataContext)
+        private readonly DataContext _context;
+
+        public CategoryRepository(DataContext context)
         {
-            DB = dataContext;
+            _context = context;
         }
-        void IRepository<ArticleCategory>.Create(ArticleCategory item)
+        public IEnumerable<ArticleCategory> GetAll()
         {
-            DB.ArticleCategories.Add(item);
+            return _context.ArticleCategories;
         }
 
-        void IRepository<ArticleCategory>.Delete(ArticleCategory item)
+        public ArticleCategory GetById(int id)
         {
-            if (DB.ArticleCategories.Find(item) != null)
-            {
-                DB.ArticleCategories.Remove(item);
-            }
+            return _context.ArticleCategories.Find(id);
         }
 
-        ArticleCategory IRepository<ArticleCategory>.Get(int id)
+        public ArticleCategory GetByName(string name)
         {
-            return DB.ArticleCategories.Find(id);
-        }
-
-        IEnumerable<ArticleCategory> IRepository<ArticleCategory>.GetAll()
-        {
-            return DB.ArticleCategories;
-        }
-
-        void IRepository<ArticleCategory>.Update(ArticleCategory item)
-        {
-            DB.Entry(item).State = System.Data.Entity.EntityState.Modified;
+            return _context.ArticleCategories.Where(c => c.Name.Equals(name)).FirstOrDefault();
         }
     }
 }

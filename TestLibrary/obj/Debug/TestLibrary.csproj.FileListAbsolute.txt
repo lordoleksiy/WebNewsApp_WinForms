@@ -1,0 +1,12 @@
+D:\Programming\C#\univer\WebAppNews\TestLibrary\bin\Debug\TestLibrary.dll.config
+D:\Programming\C#\univer\WebAppNews\TestLibrary\bin\Debug\TestLibrary.dll
+D:\Programming\C#\univer\WebAppNews\TestLibrary\bin\Debug\TestLibrary.pdb
+D:\Programming\C#\univer\WebAppNews\TestLibrary\bin\Debug\EntityFramework.dll
+D:\Programming\C#\univer\WebAppNews\TestLibrary\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programming\C#\univer\WebAppNews\TestLibrary\bin\Debug\EntityFramework.xml
+D:\Programming\C#\univer\WebAppNews\TestLibrary\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programming\C#\univer\WebAppNews\TestLibrary\obj\Debug\TestLibrary.csproj.AssemblyReference.cache
+D:\Programming\C#\univer\WebAppNews\TestLibrary\obj\Debug\TestLibrary.csproj.CoreCompileInputs.cache
+D:\Programming\C#\univer\WebAppNews\TestLibrary\obj\Debug\TestLibrary.csproj.CopyComplete
+D:\Programming\C#\univer\WebAppNews\TestLibrary\obj\Debug\TestLibrary.dll
+D:\Programming\C#\univer\WebAppNews\TestLibrary\obj\Debug\TestLibrary.pdb

@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class ArticleCategory
+namespace WebNewsApp.DAL.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public IEnumerable<Article> Articles { get; set; }
+    public class ArticleCategory
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
+    }
 }
