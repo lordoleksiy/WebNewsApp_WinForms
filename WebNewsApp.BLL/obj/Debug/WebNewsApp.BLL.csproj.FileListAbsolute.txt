@@ -6,7 +6,6 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\WebNewsApp.BLL.pdb
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\FluentValidation.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\System.Threading.Tasks.Extensions.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\WebNewsApp.DAL.dll
@@ -15,7 +14,6 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\WebNewsApp.DAL.pdb
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\WebNewsApp.DAL.dll.config
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\FluentValidation.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\System.Threading.Tasks.Extensions.xml
@@ -23,3 +21,7 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\EntityFramework.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\obj\Debug\WebNewsApp.BLL.csproj.CopyComplete
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\obj\Debug\WebNewsApp.BLL.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\obj\Debug\WebNewsApp.BLL.pdb
+D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Ninject.dll
+D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\Ninject.xml
+D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\AutoMapper.dll
+D:\Programming\C#\univer\WebAppNews\WebNewsApp.BLL\bin\Debug\AutoMapper.xml

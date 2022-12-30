@@ -9,7 +9,6 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\WebNewsApp.exe
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\WebNewsApp.pdb
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\System.Threading.Tasks.Extensions.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\WebNewsApp.BLL.dll
@@ -19,7 +18,6 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\WebNewsApp.BLL.pdb
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\WebNewsApp.BLL.dll.config
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\System.Threading.Tasks.Extensions.xml
@@ -27,9 +25,15 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\WebNewsApp.DAL.pdb
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\WebNewsApp.DAL.dll.config
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\FluentValidation.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.xml
-D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.exe.config
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.PL.csproj.CopyComplete
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.exe
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.pdb
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.AuthorizationWindow.resources
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.RegistrationWindow.resources
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Ninject.dll
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\Ninject.xml
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\AutoMapper.dll
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\AutoMapper.xml
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.OwnAccountWindow.resources

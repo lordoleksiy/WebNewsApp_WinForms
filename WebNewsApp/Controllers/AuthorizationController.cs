@@ -18,7 +18,7 @@ namespace WebNewsApp.Controllers
             _service = service;
         }
 
-        public bool Register(UserViewModel user)
+        public string Register(UserViewModel user)
         {
             var userDTO = new UserDTO()
             {
@@ -35,30 +35,33 @@ namespace WebNewsApp.Controllers
             }
             catch (ValidationException ex)
             {
-                return false;
+                return ex.Message;
             }
-            return true;
+            return null;
         }
-        public UserViewModel LogIn(UserViewModel user)
+        public UserViewModel LogIn(string login, string password)
         {
             UserDTO userDTO;
+            var user = new UserViewModel(); 
             try 
             { 
-                userDTO = _service.Login(user.Login, user.Password); 
+                userDTO = _service.Login(login, password); 
             }
             catch(ValidationException ex)
             {
-                return null;
+                user.ErrorStatus = ex.Message;
+                return user;
             }
-            return new UserViewModel()
-            {
-                Id = userDTO.Id,
-                Email = userDTO.Email,
-                Name = userDTO.Name,
-                Surname = userDTO.Surname,
-                Description = userDTO.Description,
-                RegisterDate = userDTO.RegisterDate
-            };
+            
+            user.Id = userDTO.Id;
+            user.Email = userDTO.Email;
+            user.Login = userDTO.Login;
+            user.Name = userDTO.Name;
+            user.Surname = userDTO.Surname;
+            user.Description = userDTO.Description;
+            user.RegisterDate = userDTO.RegisterDate;
+
+            return user;
         }
     }
 }

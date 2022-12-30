@@ -16,5 +16,6 @@ namespace WebNewsApp.Models
         public string Surname { get; set; }
         public string Description { get; set; }
         public DateTime RegisterDate { get; set; }
+        public string ErrorStatus { get; set; }
     }
 }

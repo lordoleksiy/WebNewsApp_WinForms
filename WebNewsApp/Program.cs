@@ -4,28 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
+using Ninject;
+using WebNewsApp.BLL.Infrastructure;
 using WebNewsApp.Views;
 
 namespace WebNewsApp
 {
-    internal static class Program
-    {
+    public static class Program
+    {   
+        public static IKernel Kernel { get; set; }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            var services = new ServiceCollection();
-
-            using (var provider = services.BuildServiceProvider())
-            {
-
-            }
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            Kernel = new StandardKernel();
+            Kernel.Load(new NinjectRegistrations());
             Application.Run(new MainWindow());
+
         }
     }
 }

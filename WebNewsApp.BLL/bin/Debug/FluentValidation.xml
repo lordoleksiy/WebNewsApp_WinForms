@@ -1135,6 +1135,28 @@
             <param name="ignoreTrailingZeros">Whether the validator will ignore trailing zeros.</param>
             <returns></returns>
         </member>
+        <member name="M:FluentValidation.DefaultValidatorExtensions.PrecisionScale``1(FluentValidation.IRuleBuilder{``0,System.Decimal},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Defines a scale precision validator on the current rule builder that ensures a decimal the specified precision and scale.
+            </summary>
+            <typeparam name="T">Type of object being validated</typeparam>
+            <param name="ruleBuilder">The rule builder on which the validator should be defined</param>
+            <param name="scale">Allowed scale of the value</param>
+            <param name="precision">Allowed precision of the value</param>
+            <param name="ignoreTrailingZeros">Whether the validator will ignore trailing zeros after the decimal point. For example, when set to true the decimal 123.4500 will be considered to have a precision of 5 and scale of 2. When set to false, it will be considered to have a precision of 7 and scale of 4.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentValidation.DefaultValidatorExtensions.PrecisionScale``1(FluentValidation.IRuleBuilder{``0,System.Nullable{System.Decimal}},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Defines a scale precision validator on the current rule builder that ensures a decimal the specified precision and scale.
+            </summary>
+            <typeparam name="T">Type of object being validated</typeparam>
+            <param name="ruleBuilder">The rule builder on which the validator should be defined</param>
+            <param name="scale">Allowed scale of the value</param>
+            <param name="precision">Allowed precision of the value</param>
+            <param name="ignoreTrailingZeros">Whether the validator will ignore trailing zeros after the decimal point. For example, when set to true the decimal 123.4500 will be considered to have a precision of 5 and scale of 2. When set to false, it will be considered to have a precision of 7 and scale of 4.</param>
+            <returns></returns>
+        </member>
         <member name="M:FluentValidation.DefaultValidatorExtensions.Custom``2(FluentValidation.IRuleBuilder{``0,``1},System.Action{``1,FluentValidation.ValidationContext{``0}})">
             <summary>
             Defines a custom validation rule

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNewsApp.BLL", "WebNewsAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNewsApp.PL", "WebNewsApp\WebNewsApp.PL.csproj", "{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNewsAppDal.Tests", "WebNewsAppDal.Tests\WebNewsAppDal.Tests.csproj", "{26FC7BAA-0322-43EC-B05D-0D15E88A400F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F82CF10-EF6E-4549-84E2-C72E68FAFC08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26FC7BAA-0322-43EC-B05D-0D15E88A400F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FC7BAA-0322-43EC-B05D-0D15E88A400F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FC7BAA-0322-43EC-B05D-0D15E88A400F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FC7BAA-0322-43EC-B05D-0D15E88A400F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
