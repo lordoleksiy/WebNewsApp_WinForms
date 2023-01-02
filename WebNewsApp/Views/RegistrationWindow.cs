@@ -61,19 +61,27 @@ namespace WebNewsApp.Views
                 Surname = surname,
                 Password = password,
             };
-            var  res = _authorizationController.Register(user);
+            var  account = _authorizationController.Register(user);
 
-            if (res != null)
+            if (account.ErrorStatus != null)
             {
-                this.warningLabel.Text = res;
+                this.warningLabel.Text = account.ErrorStatus;
             }
             else
             {
+                AccountController.Set(account);
                 this.Close();
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 MessageBox.Show("You are successfully registretated!");
             }
+        }
+
+        private void mainWindow_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }

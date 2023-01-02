@@ -16,6 +16,7 @@ namespace WebNewsApp.BLL.Infrastructure
             Bind<IAuthorizationService>().To<AuthorizationService>();
             Bind<IArticleManagerService>().To<ArticleManagerService>();
             Bind<IUserManagerService>().To<UserManagerService>();
+            Bind<IPublishManagerService>().To<PublishManagerService>();
         }
     }
 }

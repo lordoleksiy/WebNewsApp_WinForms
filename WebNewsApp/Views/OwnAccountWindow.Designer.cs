@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.exitLabel = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
             this.DeleteLink = new System.Windows.Forms.Label();
             this.descriptionBox = new System.Windows.Forms.TextBox();
@@ -46,13 +47,16 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.surnameBox = new System.Windows.Forms.TextBox();
-            this.exitLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.dateBox);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.exitLabel);
             this.panel1.Controls.Add(this.warningLabel);
             this.panel1.Controls.Add(this.DeleteLink);
@@ -76,6 +80,19 @@
             this.panel1.Size = new System.Drawing.Size(800, 453);
             this.panel1.TabIndex = 4;
             // 
+            // exitLabel
+            // 
+            this.exitLabel.AutoSize = true;
+            this.exitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exitLabel.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exitLabel.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.exitLabel.Location = new System.Drawing.Point(644, 39);
+            this.exitLabel.Name = "exitLabel";
+            this.exitLabel.Size = new System.Drawing.Size(133, 26);
+            this.exitLabel.TabIndex = 30;
+            this.exitLabel.Text = "Exit from account";
+            this.exitLabel.Click += new System.EventHandler(this.exitLabel_Click);
+            // 
             // warningLabel
             // 
             this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -92,11 +109,12 @@
             this.DeleteLink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteLink.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DeleteLink.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.DeleteLink.Location = new System.Drawing.Point(678, 10);
+            this.DeleteLink.Location = new System.Drawing.Point(644, 10);
             this.DeleteLink.Name = "DeleteLink";
             this.DeleteLink.Size = new System.Drawing.Size(110, 26);
             this.DeleteLink.TabIndex = 5;
             this.DeleteLink.Text = "Delete account";
+            this.DeleteLink.Click += new System.EventHandler(this.DeleteLink_Click);
             // 
             // descriptionBox
             // 
@@ -143,7 +161,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(439, 163);
+            this.label6.Location = new System.Drawing.Point(439, 138);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 26);
             this.label6.TabIndex = 24;
@@ -164,7 +182,7 @@
             // passwordBox
             // 
             this.passwordBox.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordBox.Location = new System.Drawing.Point(600, 159);
+            this.passwordBox.Location = new System.Drawing.Point(600, 137);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(177, 30);
@@ -182,7 +200,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(439, 117);
+            this.label4.Location = new System.Drawing.Point(439, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 26);
             this.label4.TabIndex = 22;
@@ -237,22 +255,29 @@
             // surnameBox
             // 
             this.surnameBox.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.surnameBox.Location = new System.Drawing.Point(600, 113);
+            this.surnameBox.Location = new System.Drawing.Point(600, 91);
             this.surnameBox.Name = "surnameBox";
             this.surnameBox.Size = new System.Drawing.Size(177, 30);
             this.surnameBox.TabIndex = 20;
             // 
-            // exitLabel
+            // label7
             // 
-            this.exitLabel.AutoSize = true;
-            this.exitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitLabel.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.exitLabel.Location = new System.Drawing.Point(664, 39);
-            this.exitLabel.Name = "exitLabel";
-            this.exitLabel.Size = new System.Drawing.Size(133, 26);
-            this.exitLabel.TabIndex = 30;
-            this.exitLabel.Text = "Exit from account";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(439, 180);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 26);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Registration date:";
+            // 
+            // dateBox
+            // 
+            this.dateBox.Enabled = false;
+            this.dateBox.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateBox.Location = new System.Drawing.Point(600, 183);
+            this.dateBox.Name = "dateBox";
+            this.dateBox.Size = new System.Drawing.Size(177, 30);
+            this.dateBox.TabIndex = 32;
             // 
             // OwnAccountWindow
             // 
@@ -263,6 +288,7 @@
             this.Name = "OwnAccountWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OwnAccountWindow";
+            this.Load += new System.EventHandler(this.OwnAccountWindow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -290,5 +316,7 @@
         private System.Windows.Forms.Label DeleteLink;
         private System.Windows.Forms.Label warningLabel;
         private System.Windows.Forms.Label exitLabel;
+        private System.Windows.Forms.TextBox dateBox;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -20,7 +20,7 @@ namespace WebNewsApp.BLL.Services
         }
         public void Delete(int id)
         {
-            if (UnitOfWork.UserRepository.GetById(id) == null) return;
+            if (UnitOfWork.UserRepository.GetById(id) == null) throw new ValidationException("No such user!");
             UnitOfWork.UserRepository.Delete(id);
             UnitOfWork.Save();
         }

@@ -16,16 +16,13 @@ namespace WebNewsApp.Views
 {
     public partial class AuthorizationWindow : Form
     {
-        private readonly IAuthorizationService _authorizationService;
-        private readonly IUserManagerService _userManagerService;
         private readonly AuthorizationController _authorizationController;
         
         public AuthorizationWindow()
         {
             IKernel kernel = Program.Kernel;
-            _authorizationService = kernel.Get<IAuthorizationService>();
-            _userManagerService = kernel.Get<IUserManagerService>();
-            _authorizationController = new AuthorizationController(_authorizationService);
+            var authorizationService = kernel.Get<IAuthorizationService>();;
+            _authorizationController = new AuthorizationController(authorizationService);
             InitializeComponent();
         }
 
@@ -57,6 +54,13 @@ namespace WebNewsApp.Views
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
             }
+        }
+
+        private void mainWindow_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }

@@ -11,5 +11,6 @@ namespace WebNewsApp.BLL.Interfaces
     {
         UserDTO Login(string login, string password);
         void Register(UserDTO user);
+        UserDTO FindByLogin(string Login);
     }
 }

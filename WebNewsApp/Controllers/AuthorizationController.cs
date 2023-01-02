@@ -18,8 +18,9 @@ namespace WebNewsApp.Controllers
             _service = service;
         }
 
-        public string Register(UserViewModel user)
+        public UserViewModel Register(UserViewModel user)
         {
+            UserViewModel newUser;
             var userDTO = new UserDTO()
             {
                 Password = user.Password,
@@ -32,12 +33,13 @@ namespace WebNewsApp.Controllers
             try
             {
                 _service.Register(userDTO);
+                user.Id = _service.FindByLogin(userDTO.Login).Id;
             }
             catch (ValidationException ex)
             {
-                return ex.Message;
+                user.ErrorStatus = ex.Message;
             }
-            return null;
+            return user;
         }
         public UserViewModel LogIn(string login, string password)
         {
@@ -58,6 +60,7 @@ namespace WebNewsApp.Controllers
             user.Login = userDTO.Login;
             user.Name = userDTO.Name;
             user.Surname = userDTO.Surname;
+            user.Password = userDTO.Password;
             user.Description = userDTO.Description;
             user.RegisterDate = userDTO.RegisterDate;
 

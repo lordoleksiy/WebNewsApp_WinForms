@@ -45,12 +45,14 @@
             this.loginBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.emailBox = new System.Windows.Forms.TextBox();
+            this.mainWindow = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.mainWindow);
             this.panel1.Controls.Add(this.warningLabel);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.password2Box);
@@ -226,6 +228,19 @@
             this.emailBox.Size = new System.Drawing.Size(177, 30);
             this.emailBox.TabIndex = 2;
             // 
+            // mainWindow
+            // 
+            this.mainWindow.AutoSize = true;
+            this.mainWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mainWindow.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainWindow.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.mainWindow.Location = new System.Drawing.Point(622, 10);
+            this.mainWindow.Name = "mainWindow";
+            this.mainWindow.Size = new System.Drawing.Size(166, 26);
+            this.mainWindow.TabIndex = 18;
+            this.mainWindow.Text = "Back To Main Window";
+            this.mainWindow.Click += new System.EventHandler(this.mainWindow_Click);
+            // 
             // RegistrationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -260,5 +275,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label warningLabel;
+        private System.Windows.Forms.Label mainWindow;
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.warningLabel = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,13 +37,14 @@
             this.loginInput = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.passwordInput = new System.Windows.Forms.TextBox();
-            this.warningLabel = new System.Windows.Forms.Label();
+            this.mainWindow = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.mainWindow);
             this.panel1.Controls.Add(this.warningLabel);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.label3);
@@ -55,6 +57,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 453);
             this.panel1.TabIndex = 4;
+            // 
+            // warningLabel
+            // 
+            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.warningLabel.ForeColor = System.Drawing.Color.Red;
+            this.warningLabel.Location = new System.Drawing.Point(22, 305);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(721, 34);
+            this.warningLabel.TabIndex = 16;
+            this.warningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // linkLabel1
             // 
@@ -127,15 +139,18 @@
             this.passwordInput.Size = new System.Drawing.Size(177, 30);
             this.passwordInput.TabIndex = 2;
             // 
-            // warningLabel
+            // mainWindow
             // 
-            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.warningLabel.ForeColor = System.Drawing.Color.Red;
-            this.warningLabel.Location = new System.Drawing.Point(22, 305);
-            this.warningLabel.Name = "warningLabel";
-            this.warningLabel.Size = new System.Drawing.Size(721, 34);
-            this.warningLabel.TabIndex = 16;
-            this.warningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.mainWindow.AutoSize = true;
+            this.mainWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mainWindow.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainWindow.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.mainWindow.Location = new System.Drawing.Point(622, 10);
+            this.mainWindow.Name = "mainWindow";
+            this.mainWindow.Size = new System.Drawing.Size(166, 26);
+            this.mainWindow.TabIndex = 17;
+            this.mainWindow.Text = "Back To Main Window";
+            this.mainWindow.Click += new System.EventHandler(this.mainWindow_Click);
             // 
             // AuthorizationWindow
             // 
@@ -163,5 +178,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label warningLabel;
+        private System.Windows.Forms.Label mainWindow;
     }
 }
