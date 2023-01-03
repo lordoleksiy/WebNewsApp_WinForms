@@ -18,12 +18,14 @@ namespace WebNewsApp.Views
     public partial class MainWindow : Form
     {
         private static ArticleManagerController _articleController;
+        private IEnumerable<ArticleViewModel> _articles;
         static MainWindow()
         {
             IKernel kernel = Program.Kernel;
             var articleService = kernel.Get<IArticleManagerService>();
             var publishService = kernel.Get<IPublishManagerService>();
             _articleController = new ArticleManagerController(articleService, publishService);
+            
             
         }
         public MainWindow()
@@ -34,11 +36,8 @@ namespace WebNewsApp.Views
             {
                 this.AccountLink.Text = Account.Login;
             }
-        }
-
-        private void InitializeRegisteredUser()
-        {
-
+            _articles = _articleController.GetArticles();
+            ShowArticles();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -56,11 +55,6 @@ namespace WebNewsApp.Views
             }
         }
 
-        private IEnumerable<ArticleViewModel> loadArticles()
-        {
-            return null;
-        }
-
         private void createButton_Click(object sender, EventArgs e)
         {
             if (AccountController.Get() != null)
@@ -74,9 +68,52 @@ namespace WebNewsApp.Views
                 MessageBox.Show("Only registered users can create articles.");
             }
         }
-        private void LoadData()
-        {
 
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            var choice = this.findComboBox.SelectedItem;
+            var text = this.inputBox.Text;
+            if (choice == null || text.Length == 0)
+            {
+                MessageBox.Show("Fill in fields");
+                return;
+            }
+            if (choice.Equals("Author"))
+            {
+                var res = _articleController.GetArticlesByAuthor(text);
+                if (res == null)
+                {
+                    MessageBox.Show("No user with such login");
+                    return;
+                }
+                _articles = res;
+                ShowArticles();
+
+            }
+        }
+
+        private void ShowArticles()
+        {
+            this.newsList.Items.Clear();
+            foreach (var article in _articles)
+            {
+                ListViewItem listItem = new ListViewItem();
+                listItem.Text = article.Header;
+                string categories = "";
+                string authors = "";
+                string tags = "";
+                article.Categories.ForEach(category => categories += $"{category.Name}; ");
+                article.Authors.ForEach(author => authors += $"{author.Login}; ");
+                article.Tags.ForEach(tag => tags += $"{tag.Name}; ");
+
+                listItem.SubItems.Add(article.PublishedTime.ToString());
+                listItem.SubItems.Add(authors);
+                listItem.SubItems.Add(tags);
+                listItem.SubItems.Add(categories);
+
+                this.newsList.Items.Add(listItem);
+
+            }
         }
     }
 }

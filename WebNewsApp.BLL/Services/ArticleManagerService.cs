@@ -98,21 +98,22 @@ namespace WebNewsApp.BLL.Services
 
         public IEnumerable<ArticleDTO> GetAll()
         {
-            var articlesDal = UnitOfWork.ArticleRepository.GetAll();
-            var articles = articlesDal.Select(a => new ArticleDTO
-            {
-                Id = a.Id,
-                Header = a.Header,
-                PublishedTime = a.PublishedTime,
-                AuthorDTOs = a.Authors.Select(u => new UserDTO
-                {
-                    Login = u.Login,
-                    Name = u.Name,
-                    Surname = u.Surname,
-                }),
-                //TagDTOs = a.Tags.Select(t => t.Name)
-            });
-            return articles;
+            var articlesDal = UnitOfWork.ArticleRepository.GetAll().ToList();
+            if (articlesDal.Count() == 0) throw new ValidationException("No articles found");
+            
+            return MapArticles(articlesDal);
+        }
+
+        public IEnumerable<ArticleDTO> FindByCategory()
+        {
+            return null;
+        }
+
+        public IEnumerable<ArticleDTO> FindByUserLogin(string login)
+        {
+            var user = UnitOfWork.UserRepository.Find(a => a.Login.Equals(login)).FirstOrDefault();
+            if (user == null) throw new ValidationException("No such user");
+            return MapArticles(user.Articles);
         }
 
         public IEnumerable<ArticleCategoryDTO> GetAllCategories()
@@ -150,6 +151,13 @@ namespace WebNewsApp.BLL.Services
             return categories;
         }
 
+
+        public ArticleDTO LoadArticleById(int id)
+        {
+            var article = UnitOfWork.ArticleRepository.GetById(id);
+            if (article == null) throw new ValidationException("No article found");
+            return ArticleDalMapper.Map<ArticleDTO>(article);
+        }
         public IEnumerable<UserDTO> GetAuthorsByArticleId(int id)
         {
             var article = UnitOfWork.ArticleRepository.GetById(id);
@@ -157,11 +165,40 @@ namespace WebNewsApp.BLL.Services
             return  UserMapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(article.Authors);
         }
 
-        public ArticleDTO LoadArticleById(int id)
+        public IEnumerable<ArticleCategoryDTO> GetCategoriesByArticleId(int id)
         {
             var article = UnitOfWork.ArticleRepository.GetById(id);
-            if (article == null) throw new ValidationException("No article found");
-            return ArticleMapper.Map<ArticleDTO>(article);
+            if (article == null) throw new ValidationException("No article with such id");
+            return article.Categories.Select(a => new ArticleCategoryDTO()
+            {
+                Id = a.Id,
+                Name = a.Name,
+                Description = a.Description
+            }).ToList();
+        }
+
+        public IEnumerable<ArticleTagDTO> GetTagsByArticleId(int id)
+        {
+            var article = UnitOfWork.ArticleRepository.GetById(id);
+            if (article == null) throw new ValidationException("No article with such id");
+            return article.Tags.Select(a => new ArticleTagDTO()
+            {
+                Id = a.Id,
+                Name = a.Name,
+            }).ToList();
+        }
+
+        private IEnumerable<ArticleDTO> MapArticles(IEnumerable<Article> articlesDal)
+        {
+            return articlesDal.Select(a => new ArticleDTO
+            {
+                Id = a.Id,
+                Header = a.Header,
+                PublishedTime = a.PublishedTime,
+                CategoryDTOs = GetCategoriesByArticleId(a.Id),
+                TagDTOs = GetTagsByArticleId(a.Id),
+                AuthorDTOs = GetAuthorsByArticleId(a.Id)
+            });
         }
     }
 }

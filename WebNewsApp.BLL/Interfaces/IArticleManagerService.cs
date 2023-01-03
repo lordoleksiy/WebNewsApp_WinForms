@@ -11,9 +11,11 @@ namespace WebNewsApp.BLL.Interfaces
     {
         IEnumerable<ArticleDTO> GetAll();
         IEnumerable<ArticleDTO> FindByCategoryId(int id);
-        IEnumerable<ArticleDTO> FindByUserId(int id);
+        IEnumerable<ArticleDTO> FindByUserLogin(string login);
         IEnumerable<ArticleDTO> FindByHeader(string header);
-        ArticleCategoryDTO GetCategoryById(int id);
+        IEnumerable<ArticleCategoryDTO> GetCategoriesByArticleId(int id);
+        IEnumerable<ArticleTagDTO> GetTagsByArticleId(int id);
+        IEnumerable<UserDTO> GetAuthorsByArticleId(int id);
         IEnumerable<ArticleCategoryDTO> GetAllCategories();
     }
 }

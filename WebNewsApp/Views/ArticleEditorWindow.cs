@@ -64,8 +64,31 @@ namespace WebNewsApp.Views
             foreach (var categoryName in categories) 
                 article.Categories.Add(new CategoryViewModel() { Name = categoryName.ToString() });
 
-            var res = _articleManagerController.CreateArticle(article);
-            MessageBox.Show(res);   
+            if (article.Id == -1)
+            {
+                var res = _articleManagerController.CreateArticle(article);
+                if (res == null)
+                {
+                    MessageBox.Show("Article is created!");
+                    _articleManagerController.GetArticleId(ref article);
+                }
+                else
+                {
+                    MessageBox.Show(res);
+                }
+            }
+            else
+            {
+                var res = _articleManagerController.UpdateArticle(article);
+                if (res == null)
+                {
+                    MessageBox.Show("Article is updated!");
+                }
+                else
+                {
+                    MessageBox.Show(res);
+                }
+            }
         }
         private void LoadData()
         {
@@ -81,6 +104,7 @@ namespace WebNewsApp.Views
         {
             article = new ArticleViewModel
             {
+                Id = -1,
                 Authors = new List<UserViewModel>(),
                 Tags = new List<TagViewModel>(),
                 Categories = new List<CategoryViewModel>()
@@ -108,9 +132,9 @@ namespace WebNewsApp.Views
                 MessageBox.Show("Author is already addded!");
                 return;
             }
-            this.authorBox.Clear();
             article.Authors.Add(user);
             this.authorListBox.Items.Add(user.Login);
+            this.authorBox.Clear();
         }
 
         private void addTagButton_Click(object sender, EventArgs e)
@@ -122,7 +146,6 @@ namespace WebNewsApp.Views
                 return;
             }
 
-            this.tagBox.Clear();
             article.Tags.Add(
                 new TagViewModel()
                 {
@@ -130,6 +153,7 @@ namespace WebNewsApp.Views
                 }) ;
 
             this.tagListBox.Items.Add(this.tagBox.Text);
+            this.tagBox.Clear();
         }
 
         private void tagListBox_SelectedIndexChanged(object sender, EventArgs e)

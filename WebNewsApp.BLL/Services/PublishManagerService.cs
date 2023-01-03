@@ -29,7 +29,7 @@ namespace WebNewsApp.BLL.Services
             throw new NotImplementedException();
         }
 
-        public void PublishArticle(ArticleDTO article)
+        public void PublishArticle(ArticleDTO article)  // return id
         {
             var articleDal = new Article()
             {
@@ -54,10 +54,10 @@ namespace WebNewsApp.BLL.Services
             }
             foreach (var category in article.CategoryDTOs)
             {
-                var categoryDal = UnitOfWork.CategoryRepository.GetById(category.Id);
+                var categoryDal = UnitOfWork.CategoryRepository.GetByName(category.Name);
                 articleDal.Categories.Add(categoryDal);
             }
-            foreach (var user in articleDal.Authors)
+            foreach (var user in article.AuthorDTOs)
             {
                 var userDal = UnitOfWork.UserRepository.GetById(user.Id);
                 articleDal.Authors.Add(userDal);
@@ -66,14 +66,47 @@ namespace WebNewsApp.BLL.Services
             UnitOfWork.Save();
         }
 
+        public int GetArticleIdByHeader(string header)
+        {
+            var userDal = UnitOfWork.ArticleRepository.Find(a => a.Header.Equals(header)).LastOrDefault();
+            if (userDal == null) throw new ValidationException("No such user");
+            return userDal.Id;
+        }
+
         public void UpdateArticle(ArticleDTO article)
         {
             var articleDal = UnitOfWork.ArticleRepository.GetById(article.Id);
+            if (articleDal == null) throw new ValidationException("No such article");
             articleDal.Header = article.Header;
             articleDal.ArticleText.Text = article.Text;
+            articleDal.Tags.Clear();
+            articleDal.Authors.Clear();
+            articleDal.Tags.Clear();
+            foreach (var tag in article.TagDTOs)
+            {
+                var tagDal = UnitOfWork.TagRepository.Find(t => t.Name.Equals(tag.Name)).FirstOrDefault();
+                if (tagDal == null)
+                {
+                    articleDal.Tags.Add(new ArticleTag() { Name = tag.Name });
+                }
+                else
+                {
+                    articleDal.Tags.Add(tagDal);
+                }
+            }
+            foreach (var category in article.CategoryDTOs)
+            {
+                var categoryDal = UnitOfWork.CategoryRepository.GetByName(category.Name);
+                articleDal.Categories.Add(categoryDal);
+            }
+            foreach (var user in article.AuthorDTOs)
+            {
+                var userDal = UnitOfWork.UserRepository.GetById(user.Id);
+                articleDal.Authors.Add(userDal);
+            }
+
             UnitOfWork.ArticleRepository.Update(articleDal);
             UnitOfWork.Save();
-            // недоделано!!!!!!! и роставь везде екскпшены
         }
     }
 }

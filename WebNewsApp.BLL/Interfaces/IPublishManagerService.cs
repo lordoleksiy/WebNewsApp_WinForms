@@ -13,5 +13,6 @@ namespace WebNewsApp.BLL.Interfaces
         void UpdateArticle(ArticleDTO article);
         void DeleteArticle(int id);
         void GetArticleByUserId(int id);
+        int GetArticleIdByHeader(string header);
     }
 }

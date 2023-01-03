@@ -21,8 +21,8 @@ namespace WebNewsApp.Controllers
 
         public IEnumerable<ArticleViewModel> GetArticles()
         {
-            var users = _articleService.GetAll();
-            return convertArticles(users);
+            var articles = _articleService.GetAll();
+            return convertArticles(articles);
         }
 
         public IEnumerable<CategoryViewModel> LoadCategories()
@@ -44,8 +44,19 @@ namespace WebNewsApp.Controllers
                 Id = article.Id,
                 Header = article.Header,
                 PublishedTime = article.PublishedTime,
-                //Authors = new List<UserViewModel>(article.AuthorDTOs.Select(a => new UserViewModel() { Id = a.Id, Login = a.Login})),
-                //Tags = new List<TagViewModel>(article.TagDTOs.Select(a => new TagViewModel() { Id =  a.Id, Name = a.Name}))
+                Authors = new List<UserViewModel>(article.AuthorDTOs.Select(a => 
+                new UserViewModel() 
+                { 
+                    Id = a.Id, 
+                    Login = a.Login,
+                    Email = a.Email,
+                    Name = a.Name,
+                    Surname = a.Surname,
+                })),
+                Tags = new List<TagViewModel>(article.TagDTOs.Select(a => 
+                new TagViewModel() { Id =  a.Id, Name = a.Name})),
+                Categories = new List<CategoryViewModel>(article.CategoryDTOs.Select(a =>
+                new CategoryViewModel() { Id = a.Id, Name = a.Name}))
             });
         }
 
@@ -65,7 +76,51 @@ namespace WebNewsApp.Controllers
             {
                 return ex.Message;
             }
-            return "Article is created!";
+            return null;
+        }
+
+        public void GetArticleId( ref ArticleViewModel article)
+        {
+            try
+            {
+                article.Id = _publishService.GetArticleIdByHeader(article.Header);
+            }
+            catch(Exception ex)
+            {
+                article.Id = -1;
+            }
+        }
+
+        public string UpdateArticle(ArticleViewModel article)
+        {
+            try
+            {
+                var articleDTO = new ArticleDTO();
+                articleDTO.Id = article.Id;
+                articleDTO.Text = article.ArticleText;
+                articleDTO.Header = article.Header;
+                articleDTO.AuthorDTOs = article.Authors.Select(a => new UserDTO { Id = a.Id });
+                articleDTO.CategoryDTOs = article.Categories.Select(a => new ArticleCategoryDTO() { Name = a.Name });
+                articleDTO.TagDTOs = article.Tags.Select(a => new ArticleTagDTO() { Name = a.Name });
+                _publishService.UpdateArticle(articleDTO);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return null;
+        }
+
+        public IEnumerable<ArticleViewModel> GetArticlesByAuthor(string login)
+        {
+            try
+            {
+                return convertArticles(_articleService.FindByUserLogin(login));
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
