@@ -57,7 +57,7 @@ namespace WebNewsApp.DAL.Repositories
         {
             get
             {
-                if (articleTagsRepository != null)
+                if (articleTagsRepository == null)
                 {
                     articleTagsRepository = new EFRepository<ArticleTag> (Db);
                 }

@@ -9,7 +9,7 @@ namespace WebNewsApp.BLL.Interfaces
 {
     public interface IPublishManagerService
     {
-        void PublishArticle(ArticleDTO article, int userId);
+        void PublishArticle(ArticleDTO article);
         void UpdateArticle(ArticleDTO article);
         void DeleteArticle(int id);
         void GetArticleByUserId(int id);

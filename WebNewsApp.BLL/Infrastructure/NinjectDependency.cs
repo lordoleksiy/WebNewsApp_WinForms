@@ -9,7 +9,7 @@ using WebNewsApp.BLL.Services;
 
 namespace WebNewsApp.BLL.Infrastructure
 {
-    public class NinjectRegistrations: NinjectModule
+    public class NinjectDependency: NinjectModule
     {
         public override void Load()
         {

@@ -9,11 +9,12 @@ namespace WebNewsApp.Models
     public class ArticleViewModel
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string Header { get; set; }
         public DateTime PublishedTime { get; set; }
-        public string Topic { get; set; }
-        public int AuthorId { get; set; }
-        public int CategoryId { get; set; }
+        public string ArticleText { get; set; }
+        public List<CategoryViewModel> Categories { get; set; }
+        public List<UserViewModel> Authors { get; set; }
+        public List<TagViewModel> Tags { get; set; }
 
     }
 }

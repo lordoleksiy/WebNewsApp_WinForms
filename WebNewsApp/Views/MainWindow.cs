@@ -17,10 +17,13 @@ namespace WebNewsApp.Views
 {
     public partial class MainWindow : Form
     {
+        private static ArticleManagerController _articleController;
         static MainWindow()
         {
             IKernel kernel = Program.Kernel;
-
+            var articleService = kernel.Get<IArticleManagerService>();
+            var publishService = kernel.Get<IPublishManagerService>();
+            _articleController = new ArticleManagerController(articleService, publishService);
             
         }
         public MainWindow()
@@ -51,6 +54,29 @@ namespace WebNewsApp.Views
                 OwnAccountWindow ownAccountWindow = new OwnAccountWindow();
                 ownAccountWindow.Show();
             }
+        }
+
+        private IEnumerable<ArticleViewModel> loadArticles()
+        {
+            return null;
+        }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            if (AccountController.Get() != null)
+            {
+                this.Hide();
+                ArticleEditorWindow articleEditorWindow = new ArticleEditorWindow();
+                articleEditorWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Only registered users can create articles.");
+            }
+        }
+        private void LoadData()
+        {
+
         }
     }
 }

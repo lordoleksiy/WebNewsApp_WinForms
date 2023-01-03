@@ -11,7 +11,7 @@ using WebNewsApp.DAL.Repositories;
 
 namespace WebNewsApp.BLL.Services
 {
-    public class ArticleManagerService : IArticleManagerService
+    public class ArticleManagerService : AutoMapperService, IArticleManagerService
     {
         private readonly EFUnitOfWork UnitOfWork;
         public ArticleManagerService(EFUnitOfWork unitOfWork)
@@ -19,31 +19,25 @@ namespace WebNewsApp.BLL.Services
             UnitOfWork = unitOfWork;
         }
 
-        public void DeleteArticle(int id)
-        {
-            UnitOfWork.ArticleRepository.Delete(id);
-            UnitOfWork.Save();
-        }
-
-        public ArticleDTO Find(int id)
-        {
-            var articleDal = UnitOfWork.ArticleRepository.GetById(id);
-            ArticleDTO article = new ArticleDTO
-            {
-                Id = articleDal.Id,
-                Header = articleDal.Header,
-                PublishedTime = articleDal.PublishedTime,
-                Text = articleDal.ArticleText.Text,
-                AuthorDTOs = articleDal.Authors.Select(a => new UserDTO
-                {
-                    Login = a.Login,
-                    Name = a.Name,
-                    Surname = a.Surname,
-                }),
-                TagDTOs = articleDal.Tags.Select(t => t.Name)
-            };
-            return article;
-        }
+        //public ArticleDTO Find(int id)
+        //{
+        //    var articleDal = UnitOfWork.ArticleRepository.GetById(id);
+        //    ArticleDTO article = new ArticleDTO
+        //    {
+        //        Id = articleDal.Id,
+        //        Header = articleDal.Header,
+        //        PublishedTime = articleDal.PublishedTime,
+        //        Text = articleDal.ArticleText.Text,
+        //        AuthorDTOs = articleDal.Authors.Select(a => new UserDTO
+        //        {
+        //            Login = a.Login,
+        //            Name = a.Name,
+        //            Surname = a.Surname,
+        //        }),
+        //        TagDTOs = articleDal.Tags.Select(t => t.Name)
+        //    };
+        //    return article;
+        //}
 
         public IEnumerable<ArticleDTO> FindByCategoryId(int categoryId)
         {
@@ -59,7 +53,7 @@ namespace WebNewsApp.BLL.Services
                     Name = u.Name,
                     Surname = u.Surname,
                 }),
-                TagDTOs = a.Tags.Select(t => t.Name)
+                //TagDTOs = a.Tags.Select(t => t.Name)
             }) ;
             return articles;
         }
@@ -78,7 +72,7 @@ namespace WebNewsApp.BLL.Services
                     Name = u.Name,
                     Surname = u.Surname,
                 }),
-                TagDTOs = a.Tags.Select(t => t.Name)
+                //TagDTOs = a.Tags.Select(t => t.Name)
             });
             return articles;
         }
@@ -97,7 +91,7 @@ namespace WebNewsApp.BLL.Services
                     Name = u.Name,
                     Surname = u.Surname,
                 }),
-                TagDTOs = a.Tags.Select(t => t.Name)
+                //TagDTOs = a.Tags.Select(t => t.Name)
             });
             return articles;
         }
@@ -116,7 +110,7 @@ namespace WebNewsApp.BLL.Services
                     Name = u.Name,
                     Surname = u.Surname,
                 }),
-                TagDTOs = a.Tags.Select(t => t.Name)
+                //TagDTOs = a.Tags.Select(t => t.Name)
             });
             return articles;
         }
@@ -144,46 +138,30 @@ namespace WebNewsApp.BLL.Services
             return category;
         }
 
-        public void PublishArticle(ArticleDTO article, int userId)
+        public IEnumerable<ArticleCategoryDTO> GetCategories()
         {
-            var user = UnitOfWork.UserRepository.GetById(userId);
-            if (user == null) throw new ValidationException("No user with such id!");
-            var articleDal = new Article()
+            var categoriesDal = UnitOfWork.CategoryRepository.GetAll();
+            var categories = categoriesDal.Select(a => new ArticleCategoryDTO()
             {
-                Header = article.Header,
-                PublishedTime = DateTime.Now,
-                ArticleText = new ArticleText() { Text = article.Text },
-                Authors = new List<User>() { user },
-            };
-            UnitOfWork.ArticleRepository.Create(articleDal);
-            foreach(var tagName in article.TagDTOs)
-            {
-                var tagDal = UnitOfWork.TagRepository.Find(t => t.Name.Equals(tagName)).First();
-                if (tagDal == null)
-                {
-                    UnitOfWork.TagRepository.Create(new ArticleTag()
-                    {
-                        Name = tagName,
-                        Articles = new List<Article>() { articleDal }
-                    });
-                }
-                else
-                {
-                    tagDal.Articles.Add(articleDal);
-                    UnitOfWork.TagRepository.Update(tagDal);
-                }
-            }
-            UnitOfWork.Save();
+                Id = a.Id,
+                Name = a.Name,
+                Description = a.Description
+            });
+            return categories;
         }
 
-        public void UpdateArticle(ArticleDTO article)
+        public IEnumerable<UserDTO> GetAuthorsByArticleId(int id)
         {
-            var articleDal = UnitOfWork.ArticleRepository.GetById(article.Id);
-            articleDal.Header = article.Header;
-            articleDal.ArticleText.Text = article.Text;
-            UnitOfWork.ArticleRepository.Update(articleDal);
-            UnitOfWork.Save();
-            // недоделано!!!!!!! и роставь везде екскпшены
+            var article = UnitOfWork.ArticleRepository.GetById(id);
+            if (article == null) throw new ValidationException("No article found");
+            return  UserMapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(article.Authors);
+        }
+
+        public ArticleDTO LoadArticleById(int id)
+        {
+            var article = UnitOfWork.ArticleRepository.GetById(id);
+            if (article == null) throw new ValidationException("No article found");
+            return ArticleMapper.Map<ArticleDTO>(article);
         }
     }
 }

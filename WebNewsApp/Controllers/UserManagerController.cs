@@ -51,5 +51,27 @@ namespace WebNewsApp.Controllers
             }
             return null;
         }
+        public UserViewModel FindUserByLogin(string login)
+        {
+            UserViewModel user = new UserViewModel();
+            try
+            {
+                var userDTO = _userManagerService.FindByLogin(login);
+                user = new UserViewModel()
+                {
+                    Id = userDTO.Id,
+                    Login = userDTO.Login,
+                    Email = userDTO.Email,
+                    Name = userDTO.Name,
+                    Surname = userDTO.Surname,
+                    Description = userDTO.Description
+                };
+            }
+            catch(Exception ex)
+            {
+                user.ErrorStatus = ex.Message;
+            }
+            return user;
+        } 
     }
 }

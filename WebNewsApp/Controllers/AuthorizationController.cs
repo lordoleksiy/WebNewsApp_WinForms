@@ -20,7 +20,6 @@ namespace WebNewsApp.Controllers
 
         public UserViewModel Register(UserViewModel user)
         {
-            UserViewModel newUser;
             var userDTO = new UserDTO()
             {
                 Password = user.Password,

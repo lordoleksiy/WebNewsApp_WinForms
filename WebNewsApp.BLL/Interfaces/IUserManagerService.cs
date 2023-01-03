@@ -13,5 +13,6 @@ namespace WebNewsApp.BLL.Interfaces
         IEnumerable<UserDTO> GetAll();
         void Update(UserDTO user);
         void Delete(int id);
+        UserDTO FindByLogin(string login);
     }
 }

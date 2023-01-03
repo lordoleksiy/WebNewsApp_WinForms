@@ -55,5 +55,11 @@ namespace WebNewsApp.BLL.Services
             UnitOfWork.UserRepository.Update(userDal);
             UnitOfWork.Save();
         }
+        public UserDTO FindByLogin(string login)
+        {
+            var user = UnitOfWork.UserRepository.Find(a => a.Login.Equals(login)).FirstOrDefault();
+            if (user == null) throw new ValidationException("No user with such login");
+            return UserMapper.Map<UserDTO>(user);
+        }
     }
 }

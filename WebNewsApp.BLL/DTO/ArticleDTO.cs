@@ -13,7 +13,7 @@ namespace WebNewsApp.BLL.DTO
         public string Header { get; set; }
         public string Text { get; set; }
         public IEnumerable<UserDTO> AuthorDTOs { get; set; }
-        public IEnumerable<string> TagDTOs { get; set; }
+        public IEnumerable<ArticleTagDTO> TagDTOs { get; set; }
         public IEnumerable<ArticleCategoryDTO> CategoryDTOs { get; set; }
     }
 }

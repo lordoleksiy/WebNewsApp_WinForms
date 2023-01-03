@@ -37,3 +37,4 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\AutoMapper.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.SqlServer.dll
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.SqlServer.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.OwnAccountWindow.resources
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.ArticleEditorWindow.resources

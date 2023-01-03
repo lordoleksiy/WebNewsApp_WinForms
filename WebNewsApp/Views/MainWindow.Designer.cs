@@ -28,27 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("test1");
             this.panel1 = new System.Windows.Forms.Panel();
+            this.createButton = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.AccountLink = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Header = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Authors = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Tags = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Categories = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.createButton);
+            this.panel1.Controls.Add(this.listView1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.listBox1);
             this.panel1.Controls.Add(this.AccountLink);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 453);
             this.panel1.TabIndex = 3;
+            // 
+            // createButton
+            // 
+            this.createButton.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
+            this.createButton.Location = new System.Drawing.Point(326, 397);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(167, 42);
+            this.createButton.TabIndex = 9;
+            this.createButton.Text = "Create article";
+            this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Header,
+            this.Date,
+            this.Authors,
+            this.Tags,
+            this.Categories});
+            this.listView1.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
+            this.listView1.HideSelection = false;
+            listViewItem1.StateImageIndex = 0;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.listView1.Location = new System.Drawing.Point(57, 124);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(687, 252);
+            this.listView1.TabIndex = 8;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
+            this.label2.Location = new System.Drawing.Point(88, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 26);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Sort By:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(162, 84);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(139, 34);
+            this.comboBox1.TabIndex = 6;
             // 
             // AccountLink
             // 
@@ -75,31 +134,30 @@
             this.label1.Text = "Web News Application";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listBox1
+            // Header
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(91, 132);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(605, 276);
-            this.listBox1.TabIndex = 5;
+            this.Header.Text = "Header";
+            this.Header.Width = 159;
             // 
-            // comboBox1
+            // Date
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(156, 84);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 6;
+            this.Date.Text = "Date";
+            this.Date.Width = 94;
             // 
-            // label2
+            // Authors
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Sort By:";
+            this.Authors.Text = "Authors";
+            this.Authors.Width = 137;
+            // 
+            // Tags
+            // 
+            this.Tags.Text = "Tags";
+            this.Tags.Width = 149;
+            // 
+            // Categories
+            // 
+            this.Categories.Text = "Categories";
+            this.Categories.Width = 224;
             // 
             // MainWindow
             // 
@@ -122,6 +180,12 @@
         private System.Windows.Forms.Label AccountLink;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.ColumnHeader Header;
+        private System.Windows.Forms.ColumnHeader Date;
+        private System.Windows.Forms.ColumnHeader Authors;
+        private System.Windows.Forms.ColumnHeader Tags;
+        private System.Windows.Forms.ColumnHeader Categories;
     }
 }

@@ -23,7 +23,7 @@ namespace WebNewsApp
             Application.SetCompatibleTextRenderingDefault(false);
 
             Kernel = new StandardKernel();
-            Kernel.Load(new NinjectRegistrations());
+            Kernel.Load(new NinjectDependency());
             Application.Run(new MainWindow());
 
         }

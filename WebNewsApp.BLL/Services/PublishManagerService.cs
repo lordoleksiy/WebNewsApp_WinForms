@@ -11,7 +11,7 @@ using WebNewsApp.DAL.Repositories;
 
 namespace WebNewsApp.BLL.Services
 {
-    public class PublishManagerService : IPublishManagerService
+    public class PublishManagerService : AutoMapperService, IPublishManagerService
     {
         private readonly EFUnitOfWork UnitOfWork;
         public PublishManagerService(EFUnitOfWork unitOfWork)
@@ -20,7 +20,8 @@ namespace WebNewsApp.BLL.Services
         }
         public void DeleteArticle(int id)
         {
-            throw new NotImplementedException();
+            UnitOfWork.ArticleRepository.Delete(id);
+            UnitOfWork.Save();
         }
 
         public void GetArticleByUserId(int id)
@@ -28,32 +29,40 @@ namespace WebNewsApp.BLL.Services
             throw new NotImplementedException();
         }
 
-        public void PublishArticle(ArticleDTO article, int userId)
+        public void PublishArticle(ArticleDTO article)
         {
-            var user = UnitOfWork.UserRepository.GetById(userId);
-            if (user == null) throw new ValidationException("No user with such id!");
             var articleDal = new Article()
             {
                 Header = article.Header,
                 PublishedTime = DateTime.Now,
                 ArticleText = new ArticleText() { Text = article.Text },
-                Authors = new List<User>() { user },
+                Authors = new List<User>(),
+                Tags = new List<ArticleTag>(),
+                Categories = new List<ArticleCategory>()
             };
-            UnitOfWork.ArticleRepository.Create(articleDal);
-            foreach (var tagName in article.TagDTOs)
+            foreach (var tag in article.TagDTOs)
             {
-                var tagDal = UnitOfWork.TagRepository.Find(t => t.Name.Equals(tagName)).FirstOrDefault();
+                var tagDal = UnitOfWork.TagRepository.Find(t => t.Name.Equals(tag.Name)).FirstOrDefault();
                 if (tagDal == null)
                 {
-                    UnitOfWork.TagRepository.Create(new ArticleTag()
-                    {
-                        Name = tagName,
-                        Articles = new List<Article>() { articleDal }
-                    });
+                    articleDal.Tags.Add(new ArticleTag() { Name = tag.Name });
                 }
-                tagDal.Articles.Add(articleDal);
-                UnitOfWork.TagRepository.Update(tagDal);
+                else
+                {
+                    articleDal.Tags.Add(tagDal);
+                }
             }
+            foreach (var category in article.CategoryDTOs)
+            {
+                var categoryDal = UnitOfWork.CategoryRepository.GetById(category.Id);
+                articleDal.Categories.Add(categoryDal);
+            }
+            foreach (var user in articleDal.Authors)
+            {
+                var userDal = UnitOfWork.UserRepository.GetById(user.Id);
+                articleDal.Authors.Add(userDal);
+            }
+            UnitOfWork.ArticleRepository.Create(articleDal);
             UnitOfWork.Save();
         }
 
