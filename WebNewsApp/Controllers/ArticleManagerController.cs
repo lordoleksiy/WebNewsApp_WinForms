@@ -25,6 +25,10 @@ namespace WebNewsApp.Controllers
             return convertArticles(articles);
         }
 
+        public string LoadTextByArticleId(int id)
+        {
+            return _articleService.GetTextByArticleId(id);
+        }
         public IEnumerable<CategoryViewModel> LoadCategories()
         {
             var categoriesDTO = _articleService.GetAllCategories();
@@ -121,6 +125,42 @@ namespace WebNewsApp.Controllers
             {
                 return null;
             }
+        }
+
+        public IEnumerable<ArticleViewModel> GetArticlesByCategory(string categoryName)
+        {
+            try
+            {
+                return convertArticles(_articleService.FindByCategoryName(categoryName));
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<ArticleViewModel> GetArticlesByTag(string tagName)
+        {
+            try
+            {
+                return convertArticles(_articleService.FindByTagName(tagName));
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<ArticleViewModel> GetArticlesByHeader(string header)
+        {
+            return convertArticles(_articleService.FindByHeader(header));
+        }
+
+        public IEnumerable<ArticleViewModel> GetArticlesByTime(string date1, string date2)
+        {
+            var start = DateTime.Parse(date1);
+            var end = DateTime.Parse(date2);
+            return convertArticles(_articleService.FindByTime(start, end));  
         }
     }
 }

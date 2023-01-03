@@ -38,3 +38,4 @@ D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.SqlServ
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\bin\Debug\EntityFramework.SqlServer.xml
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.OwnAccountWindow.resources
 D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.ArticleEditorWindow.resources
+D:\Programming\C#\univer\WebAppNews\WebNewsApp\obj\Debug\WebNewsApp.Views.ArticleViewerWindow.resources

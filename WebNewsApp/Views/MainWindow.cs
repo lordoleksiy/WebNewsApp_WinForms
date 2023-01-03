@@ -19,14 +19,13 @@ namespace WebNewsApp.Views
     {
         private static ArticleManagerController _articleController;
         private IEnumerable<ArticleViewModel> _articles;
+        private bool account = false;
         static MainWindow()
         {
             IKernel kernel = Program.Kernel;
             var articleService = kernel.Get<IArticleManagerService>();
             var publishService = kernel.Get<IPublishManagerService>();
-            _articleController = new ArticleManagerController(articleService, publishService);
-            
-            
+            _articleController = new ArticleManagerController(articleService, publishService);   
         }
         public MainWindow()
         {
@@ -73,7 +72,7 @@ namespace WebNewsApp.Views
         {
             var choice = this.findComboBox.SelectedItem;
             var text = this.inputBox.Text;
-            if (choice == null || text.Length == 0)
+            if (choice == null || (text.Length == 0 && !choice.Equals("Date")))
             {
                 MessageBox.Show("Fill in fields");
                 return;
@@ -87,9 +86,40 @@ namespace WebNewsApp.Views
                     return;
                 }
                 _articles = res;
-                ShowArticles();
-
             }
+            else if (choice.Equals("Header"))
+            {
+                var res = _articleController.GetArticlesByHeader(text);
+                _articles = res;
+            }
+            else if (choice.Equals("Category"))
+            {
+                var res = _articleController.GetArticlesByCategory(text);
+                if (res == null)
+                {
+                    MessageBox.Show("No such category");
+                    return;
+                }
+                _articles = res;
+            }
+            else if (choice.Equals("Tag"))
+            {
+                var res = _articleController.GetArticlesByTag(text);
+                if (res == null)
+                {
+                    MessageBox.Show("No such tag");
+                    return;
+                }
+                _articles = res;
+            }
+            else
+            {
+                var date1 = this.dateTimeStart.Text;
+                var date2 = this.dateTimeEnd.Text;
+                _articles = _articleController.GetArticlesByTime(date1, date2);
+            }
+            account = false;
+            ShowArticles();
         }
 
         private void ShowArticles()
@@ -113,6 +143,61 @@ namespace WebNewsApp.Views
 
                 this.newsList.Items.Add(listItem);
 
+            }
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            this.inputBox.Clear();
+            account = false;
+            _articles = _articleController.GetArticles();
+            ShowArticles();
+        }
+
+        private void findComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.findComboBox.SelectedItem.Equals("Date"))
+            {
+                this.dateTimeStart.Enabled = true;
+                this.dateTimeEnd.Enabled = true;
+            }
+            else
+            {
+                this.dateTimeStart.Enabled = false;
+                this.dateTimeEnd.Enabled = false;
+            }
+        }
+
+        private void userArticles_Click(object sender, EventArgs e)
+        {
+            var user = AccountController.Get();
+            if (user != null)
+            {
+                account = true;
+                _articles = _articleController.GetArticlesByAuthor(user.Login);
+                ShowArticles();
+            }
+            else
+            {
+                MessageBox.Show("You are not registered!");
+            }
+        }
+
+        private void newsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (account)
+            {
+                var article = _articles.ToList()[this.newsList.SelectedIndices[0]];
+                article.ArticleText = _articleController.LoadTextByArticleId(article.Id);
+                ArticleEditorWindow editorWindow = new ArticleEditorWindow(article);
+                editorWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                ArticleViewerWindow articleViewer = new ArticleViewerWindow();
+                articleViewer.Show();
+                this.Close();
             }
         }
     }

@@ -16,14 +16,17 @@ namespace WebNewsApp.Views
 {
     public partial class RegistrationWindow : Form
     {
-        private readonly IAuthorizationService _authorizationService;
-        private readonly AuthorizationController _authorizationController;
+        private static readonly IAuthorizationService _authorizationService;
+        private static readonly AuthorizationController _authorizationController;
 
-        public RegistrationWindow()
+        static RegistrationWindow()
         {
             IKernel kernel = Program.Kernel;
             _authorizationService = kernel.Get<IAuthorizationService>();
             _authorizationController = new AuthorizationController(_authorizationService);
+        }
+        public RegistrationWindow()
+        {
             InitializeComponent();
         }
 

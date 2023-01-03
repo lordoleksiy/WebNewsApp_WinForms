@@ -17,9 +17,10 @@ namespace WebNewsApp.Views
     public partial class ArticleEditorWindow : Form
     {
         private ArticleViewModel article;
-        private readonly ArticleManagerController _articleManagerController;
-        private readonly UserManagerController _userManagerController;
-        public ArticleEditorWindow()
+        private static readonly ArticleManagerController _articleManagerController;
+        private static readonly UserManagerController _userManagerController;
+
+        static ArticleEditorWindow()
         {
             IKernel kernel = Program.Kernel;
             var articleManagerService = kernel.Get<IArticleManagerService>();
@@ -27,9 +28,20 @@ namespace WebNewsApp.Views
             var publishService = kernel.Get<IPublishManagerService>();
             _articleManagerController = new ArticleManagerController(articleManagerService, publishService);
             _userManagerController = new UserManagerController(userManagerService);
+        }
+        public ArticleEditorWindow()
+        {   
             InitializeComponent();
             LoadData();
             ArrangeData();
+        }
+
+        public ArticleEditorWindow(ArticleViewModel model)
+        {
+            article = model;
+            InitializeComponent();
+            LoadData();
+            UpdateVisualData();
         }
 
         private void mainWindow_Click(object sender, EventArgs e)
@@ -175,6 +187,24 @@ namespace WebNewsApp.Views
                     article.Authors.Remove(article.Authors.Find(a => a.Login.Equals(login)));
                     this.authorListBox.Items.Remove(login);
                 }
+            }
+        }
+
+        private void UpdateVisualData()
+        {
+            this.headerBox.Text = article.Header;
+            this.descriptionBox.Text = article.ArticleText;
+            foreach (var tag in article.Tags)
+            {
+                this.tagListBox.Items.Add(tag.Name);
+            }
+            foreach (var category in article.Categories)
+            {
+                this.categoryListBox.SelectedItems.Add(category.Name);
+            }
+            foreach (var user in article.Authors)
+            {
+                this.authorListBox.Items.Add(user.Login);
             }
         }
     }

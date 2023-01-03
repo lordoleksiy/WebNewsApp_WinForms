@@ -43,12 +43,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
+            this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimeEnd = new System.Windows.Forms.DateTimePicker();
+            this.userArticles = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.userArticles);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dateTimeEnd);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.dateTimeStart);
             this.panel1.Controls.Add(this.resetButton);
             this.panel1.Controls.Add(this.searchButton);
             this.panel1.Controls.Add(this.inputBox);
@@ -66,7 +76,7 @@
             // inputBox
             // 
             this.inputBox.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.inputBox.Location = new System.Drawing.Point(146, 87);
+            this.inputBox.Location = new System.Drawing.Point(108, 65);
             this.inputBox.Name = "inputBox";
             this.inputBox.Size = new System.Drawing.Size(162, 30);
             this.inputBox.TabIndex = 24;
@@ -75,7 +85,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
-            this.label3.Location = new System.Drawing.Point(55, 86);
+            this.label3.Location = new System.Drawing.Point(32, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 26);
             this.label3.TabIndex = 11;
@@ -91,17 +101,18 @@
             "Tag",
             "Category",
             "Date"});
-            this.findComboBox.Location = new System.Drawing.Point(341, 84);
+            this.findComboBox.Location = new System.Drawing.Point(276, 65);
             this.findComboBox.Name = "findComboBox";
-            this.findComboBox.Size = new System.Drawing.Size(139, 34);
+            this.findComboBox.Size = new System.Drawing.Size(159, 34);
             this.findComboBox.TabIndex = 10;
+            this.findComboBox.SelectedIndexChanged += new System.EventHandler(this.findComboBox_SelectedIndexChanged);
             // 
             // createButton
             // 
             this.createButton.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
-            this.createButton.Location = new System.Drawing.Point(326, 397);
+            this.createButton.Location = new System.Drawing.Point(71, 412);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(167, 42);
+            this.createButton.Size = new System.Drawing.Size(152, 35);
             this.createButton.TabIndex = 9;
             this.createButton.Text = "Create article";
             this.createButton.UseVisualStyleBackColor = true;
@@ -117,13 +128,14 @@
             this.Categories});
             this.newsList.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
             this.newsList.HideSelection = false;
-            this.newsList.Location = new System.Drawing.Point(57, 124);
+            this.newsList.Location = new System.Drawing.Point(37, 142);
             this.newsList.MultiSelect = false;
             this.newsList.Name = "newsList";
-            this.newsList.Size = new System.Drawing.Size(687, 252);
+            this.newsList.Size = new System.Drawing.Size(718, 267);
             this.newsList.TabIndex = 8;
             this.newsList.UseCompatibleStateImageBehavior = false;
             this.newsList.View = System.Windows.Forms.View.Details;
+            this.newsList.SelectedIndexChanged += new System.EventHandler(this.newsList_SelectedIndexChanged);
             // 
             // Header
             // 
@@ -178,9 +190,9 @@
             // searchButton
             // 
             this.searchButton.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
-            this.searchButton.Location = new System.Drawing.Point(524, 83);
+            this.searchButton.Location = new System.Drawing.Point(468, 64);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(100, 35);
+            this.searchButton.Size = new System.Drawing.Size(123, 35);
             this.searchButton.TabIndex = 25;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -189,12 +201,62 @@
             // resetButton
             // 
             this.resetButton.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
-            this.resetButton.Location = new System.Drawing.Point(644, 82);
+            this.resetButton.Location = new System.Drawing.Point(639, 64);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(100, 35);
+            this.resetButton.Size = new System.Drawing.Size(116, 35);
             this.resetButton.TabIndex = 26;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // dateTimeStart
+            // 
+            this.dateTimeStart.Enabled = false;
+            this.dateTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeStart.Location = new System.Drawing.Point(108, 106);
+            this.dateTimeStart.Name = "dateTimeStart";
+            this.dateTimeStart.Size = new System.Drawing.Size(258, 22);
+            this.dateTimeStart.TabIndex = 27;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
+            this.label2.Location = new System.Drawing.Point(32, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 26);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "From:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
+            this.label4.Location = new System.Drawing.Point(428, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 26);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "To:";
+            // 
+            // dateTimeEnd
+            // 
+            this.dateTimeEnd.Enabled = false;
+            this.dateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeEnd.Location = new System.Drawing.Point(468, 105);
+            this.dateTimeEnd.Name = "dateTimeEnd";
+            this.dateTimeEnd.Size = new System.Drawing.Size(287, 22);
+            this.dateTimeEnd.TabIndex = 29;
+            // 
+            // userArticles
+            // 
+            this.userArticles.Font = new System.Drawing.Font("Sitka Banner", 10.8F);
+            this.userArticles.Location = new System.Drawing.Point(553, 412);
+            this.userArticles.Name = "userArticles";
+            this.userArticles.Size = new System.Drawing.Size(152, 35);
+            this.userArticles.TabIndex = 31;
+            this.userArticles.Text = "My Articles";
+            this.userArticles.UseVisualStyleBackColor = true;
+            this.userArticles.Click += new System.EventHandler(this.userArticles_Click);
             // 
             // MainWindow
             // 
@@ -227,5 +289,10 @@
         private System.Windows.Forms.TextBox inputBox;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.DateTimePicker dateTimeStart;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dateTimeEnd;
+        private System.Windows.Forms.Button userArticles;
     }
 }

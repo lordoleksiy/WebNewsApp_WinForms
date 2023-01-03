@@ -58,43 +58,6 @@ namespace WebNewsApp.BLL.Services
             return articles;
         }
 
-        public IEnumerable<ArticleDTO> FindByHeader(string header)
-        {
-            var articlesDal = UnitOfWork.ArticleRepository.Find(x => x.Header.Equals(header));
-            var articles = articlesDal.Select(a => new ArticleDTO
-            {
-                Id = a.Id,
-                Header = a.Header,
-                PublishedTime = a.PublishedTime,
-                AuthorDTOs = a.Authors.Select(u => new UserDTO
-                {
-                    Login = u.Login,
-                    Name = u.Name,
-                    Surname = u.Surname,
-                }),
-                //TagDTOs = a.Tags.Select(t => t.Name)
-            });
-            return articles;
-        }
-
-        public IEnumerable<ArticleDTO> FindByUserId(int userId)
-        {
-            var articlesDal = UnitOfWork.UserRepository.GetById(userId).Articles;
-            var articles = articlesDal.Select(a => new ArticleDTO
-            {
-                Id = a.Id,
-                Header = a.Header,
-                PublishedTime = a.PublishedTime,
-                AuthorDTOs = a.Authors.Select(u => new UserDTO
-                {
-                    Login = u.Login,
-                    Name = u.Name,
-                    Surname = u.Surname,
-                }),
-                //TagDTOs = a.Tags.Select(t => t.Name)
-            });
-            return articles;
-        }
 
         public IEnumerable<ArticleDTO> GetAll()
         {
@@ -104,9 +67,10 @@ namespace WebNewsApp.BLL.Services
             return MapArticles(articlesDal);
         }
 
-        public IEnumerable<ArticleDTO> FindByCategory()
+        public IEnumerable<ArticleDTO> FindByHeader(string header)
         {
-            return null;
+            var articlesDal = UnitOfWork.ArticleRepository.Find(x => x.Header.Equals(header));
+            return MapArticles(articlesDal); 
         }
 
         public IEnumerable<ArticleDTO> FindByUserLogin(string login)
@@ -115,7 +79,23 @@ namespace WebNewsApp.BLL.Services
             if (user == null) throw new ValidationException("No such user");
             return MapArticles(user.Articles);
         }
-
+        public IEnumerable<ArticleDTO> FindByCategoryName(string categoryName)
+        {
+            var category = UnitOfWork.CategoryRepository.GetByName(categoryName);
+            if (category == null) throw new ValidationException("No such category name");
+            return MapArticles(category.Articles);
+        }
+        public IEnumerable<ArticleDTO> FindByTagName(string tagName)
+        {
+            var tag = UnitOfWork.TagRepository.Find(a => a.Name.Equals(tagName)).FirstOrDefault();
+            if (tag == null) throw new ValidationException("No such tag name");
+            return MapArticles(tag.Articles);
+        }
+        public IEnumerable<ArticleDTO> FindByTime(DateTime start, DateTime end)
+        {
+            var articles = UnitOfWork.ArticleRepository.Find(a => a.PublishedTime > start && a.PublishedTime < end);
+            return MapArticles(articles);
+        }
         public IEnumerable<ArticleCategoryDTO> GetAllCategories()
         {
             var categoriesDal = UnitOfWork.CategoryRepository.GetAll();
@@ -127,36 +107,10 @@ namespace WebNewsApp.BLL.Services
             });
         }
 
-        public ArticleCategoryDTO GetCategoryById(int id)
-        {
-            var categoryDal = UnitOfWork.CategoryRepository.GetById(id);
-            var category = new ArticleCategoryDTO()
-            {
-                Id = categoryDal.Id,
-                Name = categoryDal.Name,
-                Description= categoryDal.Description
-            };
-            return category;
-        }
-
-        public IEnumerable<ArticleCategoryDTO> GetCategories()
-        {
-            var categoriesDal = UnitOfWork.CategoryRepository.GetAll();
-            var categories = categoriesDal.Select(a => new ArticleCategoryDTO()
-            {
-                Id = a.Id,
-                Name = a.Name,
-                Description = a.Description
-            });
-            return categories;
-        }
-
-
-        public ArticleDTO LoadArticleById(int id)
+        public string GetTextByArticleId(int id)
         {
             var article = UnitOfWork.ArticleRepository.GetById(id);
-            if (article == null) throw new ValidationException("No article found");
-            return ArticleDalMapper.Map<ArticleDTO>(article);
+            return article.ArticleText.Text;
         }
         public IEnumerable<UserDTO> GetAuthorsByArticleId(int id)
         {

@@ -88,6 +88,12 @@
     <Compile Include="Views\ArticleEditorWindow.Designer.cs">
       <DependentUpon>ArticleEditorWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ArticleViewerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ArticleViewerWindow.Designer.cs">
+      <DependentUpon>ArticleViewerWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AuthorizationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </Compile>
     <EmbeddedResource Include="Views\ArticleEditorWindow.resx">
       <DependentUpon>ArticleEditorWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ArticleViewerWindow.resx">
+      <DependentUpon>ArticleViewerWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AuthorizationWindow.resx">
       <DependentUpon>AuthorizationWindow.cs</DependentUpon>
