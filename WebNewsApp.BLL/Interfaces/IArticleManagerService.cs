@@ -19,6 +19,7 @@ namespace WebNewsApp.BLL.Interfaces
         IEnumerable<ArticleTagDTO> GetTagsByArticleId(int id);
         IEnumerable<UserDTO> GetAuthorsByArticleId(int id);
         IEnumerable<ArticleCategoryDTO> GetAllCategories();
+        void DeleteArticle(int id);
         string GetTextByArticleId(int id);
     }
 }

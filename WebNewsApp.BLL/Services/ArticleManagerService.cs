@@ -19,46 +19,6 @@ namespace WebNewsApp.BLL.Services
             UnitOfWork = unitOfWork;
         }
 
-        //public ArticleDTO Find(int id)
-        //{
-        //    var articleDal = UnitOfWork.ArticleRepository.GetById(id);
-        //    ArticleDTO article = new ArticleDTO
-        //    {
-        //        Id = articleDal.Id,
-        //        Header = articleDal.Header,
-        //        PublishedTime = articleDal.PublishedTime,
-        //        Text = articleDal.ArticleText.Text,
-        //        AuthorDTOs = articleDal.Authors.Select(a => new UserDTO
-        //        {
-        //            Login = a.Login,
-        //            Name = a.Name,
-        //            Surname = a.Surname,
-        //        }),
-        //        TagDTOs = articleDal.Tags.Select(t => t.Name)
-        //    };
-        //    return article;
-        //}
-
-        public IEnumerable<ArticleDTO> FindByCategoryId(int categoryId)
-        {
-            var articlesDal = UnitOfWork.CategoryRepository.GetById(categoryId).Articles;
-            var articles = articlesDal.Select(a => new ArticleDTO
-            {
-                Id = a.Id,
-                Header = a.Header,
-                PublishedTime = a.PublishedTime,
-                AuthorDTOs = a.Authors.Select(u => new UserDTO
-                {
-                    Login = u.Login,
-                    Name = u.Name,
-                    Surname = u.Surname,
-                }),
-                //TagDTOs = a.Tags.Select(t => t.Name)
-            }) ;
-            return articles;
-        }
-
-
         public IEnumerable<ArticleDTO> GetAll()
         {
             var articlesDal = UnitOfWork.ArticleRepository.GetAll().ToList();
@@ -140,6 +100,12 @@ namespace WebNewsApp.BLL.Services
                 Id = a.Id,
                 Name = a.Name,
             }).ToList();
+        }
+
+        public void DeleteArticle(int id)
+        {
+            UnitOfWork.ArticleRepository.Delete(id);
+            UnitOfWork.Save();
         }
 
         private IEnumerable<ArticleDTO> MapArticles(IEnumerable<Article> articlesDal)

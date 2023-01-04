@@ -46,12 +46,14 @@
             this.headerBox = new System.Windows.Forms.TextBox();
             this.mainWindow = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.DeleteLink = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.DeleteLink);
             this.panel1.Controls.Add(this.addAuthorButton);
             this.panel1.Controls.Add(this.addTagButton);
             this.panel1.Controls.Add(this.tagListBox);
@@ -247,6 +249,19 @@
             this.label1.Text = "Web News Application";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // DeleteLink
+            // 
+            this.DeleteLink.AutoSize = true;
+            this.DeleteLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteLink.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteLink.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.DeleteLink.Location = new System.Drawing.Point(9, 10);
+            this.DeleteLink.Name = "DeleteLink";
+            this.DeleteLink.Size = new System.Drawing.Size(101, 26);
+            this.DeleteLink.TabIndex = 6;
+            this.DeleteLink.Text = "Delete Article";
+            this.DeleteLink.Click += new System.EventHandler(this.DeleteLink_Click);
+            // 
             // ArticleEditorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -282,5 +297,6 @@
         private System.Windows.Forms.ListBox authorListBox;
         private System.Windows.Forms.Button addAuthorButton;
         private System.Windows.Forms.Button addTagButton;
+        private System.Windows.Forms.Label DeleteLink;
     }
 }

@@ -185,19 +185,19 @@ namespace WebNewsApp.Views
 
         private void newsList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var article = _articles.ToList()[this.newsList.SelectedIndices[0]];
+            article.ArticleText = _articleController.LoadTextByArticleId(article.Id);
             if (account)
             {
-                var article = _articles.ToList()[this.newsList.SelectedIndices[0]];
-                article.ArticleText = _articleController.LoadTextByArticleId(article.Id);
                 ArticleEditorWindow editorWindow = new ArticleEditorWindow(article);
                 editorWindow.Show();
-                this.Close();
+                this.Hide();
             }
             else
             {
-                ArticleViewerWindow articleViewer = new ArticleViewerWindow();
+                ArticleViewerWindow articleViewer = new ArticleViewerWindow(article);
                 articleViewer.Show();
-                this.Close();
+                this.Hide();
             }
         }
     }

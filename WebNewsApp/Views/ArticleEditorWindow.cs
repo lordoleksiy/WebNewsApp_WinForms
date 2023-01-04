@@ -207,5 +207,21 @@ namespace WebNewsApp.Views
                 this.authorListBox.Items.Add(user.Login);
             }
         }
+
+        private void DeleteLink_Click(object sender, EventArgs e)
+        {
+            if (article.Id != -1)
+            {
+                _articleManagerController.DeleteArticle(article.Id);
+                this.Close();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("No such article!");
+            }
+            
+        }
     }
 }

@@ -162,5 +162,9 @@ namespace WebNewsApp.Controllers
             var end = DateTime.Parse(date2);
             return convertArticles(_articleService.FindByTime(start, end));  
         }
+        public void DeleteArticle(int id)
+        {  
+            _articleService.DeleteArticle(id);
+        }
     }
 }
