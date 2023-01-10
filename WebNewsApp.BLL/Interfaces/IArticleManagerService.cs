@@ -15,9 +15,6 @@ namespace WebNewsApp.BLL.Interfaces
         IEnumerable<ArticleDTO> FindByTime(DateTime start, DateTime end);
         IEnumerable<ArticleDTO> FindByUserLogin(string login);
         IEnumerable<ArticleDTO> FindByHeader(string header);
-        IEnumerable<ArticleCategoryDTO> GetCategoriesByArticleId(int id);
-        IEnumerable<ArticleTagDTO> GetTagsByArticleId(int id);
-        IEnumerable<UserDTO> GetAuthorsByArticleId(int id);
         IEnumerable<ArticleCategoryDTO> GetAllCategories();
         void DeleteArticle(int id);
         string GetTextByArticleId(int id);

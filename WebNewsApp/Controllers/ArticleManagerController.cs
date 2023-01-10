@@ -89,7 +89,7 @@ namespace WebNewsApp.Controllers
             {
                 article.Id = _publishService.GetArticleIdByHeader(article.Header);
             }
-            catch(Exception ex)
+            catch
             {
                 article.Id = -1;
             }
