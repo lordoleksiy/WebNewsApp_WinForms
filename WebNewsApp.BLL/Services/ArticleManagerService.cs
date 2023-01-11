@@ -59,12 +59,7 @@ namespace WebNewsApp.BLL.Services
         public IEnumerable<ArticleCategoryDTO> GetAllCategories()
         {
             var categoriesDal = UnitOfWork.CategoryRepository.GetAll();
-            return categoriesDal.Select(a => new ArticleCategoryDTO
-            {
-                Id = a.Id,
-                Name = a.Name,
-                Description = a.Description
-            });
+            return CategoryMapper.Map<IEnumerable<ArticleCategory>, IEnumerable<ArticleCategoryDTO>>(categoriesDal);
         }
 
         public string GetTextByArticleId(int id)
