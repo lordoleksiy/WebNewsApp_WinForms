@@ -72,10 +72,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ArticleManagerController.cs" />
-    <Compile Include="Controllers\AuthorizationController.cs" />
-    <Compile Include="Controllers\UserManagerController.cs" />
+    <Compile Include="Presenters\AccountPresenter.cs" />
+    <Compile Include="Presenters\ArticleEditorPresenter.cs" />
+    <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\ArticleViewerPresenter.cs" />
+    <Compile Include="Presenters\AuthorizationPresenter.cs" />
+    <Compile Include="Presenters\RegistrationPresenter.cs" />
+    <Compile Include="Presenters\OwnAccountPresenter.cs" />
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />

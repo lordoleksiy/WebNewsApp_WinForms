@@ -10,7 +10,7 @@ namespace WebNewsApp.DAL.Repositories
         private DataContext Db;
         private EFRepository<Article> articleRepository;
         private EFRepository<User> userRepository;
-        private CategoryRepository categoryRepository;
+        private EFRepository<ArticleCategory> categoryRepository;
         private EFRepository<ArticleTag> articleTagsRepository;
 
         public EFUnitOfWork()
@@ -40,13 +40,13 @@ namespace WebNewsApp.DAL.Repositories
                 return userRepository;
             }
         }
-        public ICategoryRepository CategoryRepository
+        public IRepository<ArticleCategory> CategoryRepository
         {
             get
             {
                 if (categoryRepository == null)
                 {
-                    categoryRepository = new CategoryRepository(Db);
+                    categoryRepository = new EFRepository<ArticleCategory>(Db);
                 }
                 return categoryRepository;
             }

@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.mainWindow = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.accountLink = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.loginInput = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.passwordInput = new System.Windows.Forms.TextBox();
-            this.mainWindow = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +46,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this.mainWindow);
             this.panel1.Controls.Add(this.warningLabel);
-            this.panel1.Controls.Add(this.linkLabel1);
+            this.panel1.Controls.Add(this.accountLink);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -58,6 +58,18 @@
             this.panel1.Size = new System.Drawing.Size(800, 453);
             this.panel1.TabIndex = 4;
             // 
+            // mainWindow
+            // 
+            this.mainWindow.AutoSize = true;
+            this.mainWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mainWindow.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainWindow.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.mainWindow.Location = new System.Drawing.Point(622, 10);
+            this.mainWindow.Name = "mainWindow";
+            this.mainWindow.Size = new System.Drawing.Size(166, 26);
+            this.mainWindow.TabIndex = 17;
+            this.mainWindow.Text = "Back To Main Window";
+            // 
             // warningLabel
             // 
             this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -68,17 +80,16 @@
             this.warningLabel.TabIndex = 16;
             this.warningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // linkLabel1
+            // accountLink
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.2F);
-            this.linkLabel1.Location = new System.Drawing.Point(328, 399);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(122, 13);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Don\'t have an account?";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.accountLink.AutoSize = true;
+            this.accountLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.2F);
+            this.accountLink.Location = new System.Drawing.Point(328, 399);
+            this.accountLink.Name = "accountLink";
+            this.accountLink.Size = new System.Drawing.Size(122, 13);
+            this.accountLink.TabIndex = 6;
+            this.accountLink.TabStop = true;
+            this.accountLink.Text = "Don\'t have an account?";
             // 
             // label3
             // 
@@ -128,7 +139,6 @@
             this.loginButton.TabIndex = 0;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // passwordInput
             // 
@@ -138,19 +148,6 @@
             this.passwordInput.PasswordChar = '*';
             this.passwordInput.Size = new System.Drawing.Size(177, 30);
             this.passwordInput.TabIndex = 2;
-            // 
-            // mainWindow
-            // 
-            this.mainWindow.AutoSize = true;
-            this.mainWindow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mainWindow.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mainWindow.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.mainWindow.Location = new System.Drawing.Point(622, 10);
-            this.mainWindow.Name = "mainWindow";
-            this.mainWindow.Size = new System.Drawing.Size(166, 26);
-            this.mainWindow.TabIndex = 17;
-            this.mainWindow.Text = "Back To Main Window";
-            this.mainWindow.Click += new System.EventHandler(this.mainWindow_Click);
             // 
             // AuthorizationWindow
             // 
@@ -174,7 +171,7 @@
         private System.Windows.Forms.TextBox loginInput;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox passwordInput;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel accountLink;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label warningLabel;

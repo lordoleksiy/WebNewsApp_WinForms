@@ -8,6 +8,7 @@ namespace WebNewsApp.BLL.Infrastructure
 {
     public class ValidationException : Exception
     {
+        //protected ValidationException() : base(,)
         public string Property { get; protected set; }
         public ValidationException(string message) : base(message)
         {}
@@ -15,5 +16,6 @@ namespace WebNewsApp.BLL.Infrastructure
         {
             Property = prop;
         }
+        //protected   
     }
 }

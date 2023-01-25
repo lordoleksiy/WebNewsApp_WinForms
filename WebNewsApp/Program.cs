@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Ninject;
 using WebNewsApp.BLL.Infrastructure;
+using WebNewsApp.Controllers;
 using WebNewsApp.Views;
 
 namespace WebNewsApp
@@ -24,7 +25,10 @@ namespace WebNewsApp
 
             Kernel = new StandardKernel();
             Kernel.Load(new NinjectDependency());
-            Application.Run(new MainWindow());
+
+            var window = new MainWindow();
+            new MainPresenter(window);
+            Application.Run(window);
 
         }
     }

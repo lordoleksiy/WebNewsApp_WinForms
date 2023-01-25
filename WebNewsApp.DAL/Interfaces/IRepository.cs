@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace WebNewsApp.DAL.Interfaces
 {
+    //public interface ArticleRepository : IRepository<int,Article>
+    //Extend methods
     public interface IRepository<T> where T: class
     {
         IEnumerable<T> GetAll();

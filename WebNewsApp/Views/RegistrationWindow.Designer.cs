@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.mainWindow = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.password2Box = new System.Windows.Forms.TextBox();
+            this.passwordBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.surnameBox = new System.Windows.Forms.TextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.accountLink = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.loginBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
             this.emailBox = new System.Windows.Forms.TextBox();
-            this.mainWindow = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,24 +55,36 @@
             this.panel1.Controls.Add(this.mainWindow);
             this.panel1.Controls.Add(this.warningLabel);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.password2Box);
+            this.panel1.Controls.Add(this.passwordBox2);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.passwordBox);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.nameBox);
             this.panel1.Controls.Add(this.surnameBox);
-            this.panel1.Controls.Add(this.linkLabel1);
+            this.panel1.Controls.Add(this.accountLink);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.loginBox);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.registerButton);
             this.panel1.Controls.Add(this.emailBox);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 453);
             this.panel1.TabIndex = 5;
+            // 
+            // mainWindow
+            // 
+            this.mainWindow.AutoSize = true;
+            this.mainWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mainWindow.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainWindow.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.mainWindow.Location = new System.Drawing.Point(622, 10);
+            this.mainWindow.Name = "mainWindow";
+            this.mainWindow.Size = new System.Drawing.Size(166, 26);
+            this.mainWindow.TabIndex = 18;
+            this.mainWindow.Text = "Back To Main Window";
             // 
             // warningLabel
             // 
@@ -94,14 +106,14 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Password again:";
             // 
-            // password2Box
+            // passwordBox2
             // 
-            this.password2Box.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password2Box.Location = new System.Drawing.Point(422, 298);
-            this.password2Box.Name = "password2Box";
-            this.password2Box.PasswordChar = '*';
-            this.password2Box.Size = new System.Drawing.Size(177, 30);
-            this.password2Box.TabIndex = 13;
+            this.passwordBox2.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordBox2.Location = new System.Drawing.Point(422, 298);
+            this.passwordBox2.Name = "passwordBox2";
+            this.passwordBox2.PasswordChar = '*';
+            this.passwordBox2.Size = new System.Drawing.Size(177, 30);
+            this.passwordBox2.TabIndex = 13;
             // 
             // label6
             // 
@@ -158,17 +170,16 @@
             this.surnameBox.Size = new System.Drawing.Size(177, 30);
             this.surnameBox.TabIndex = 8;
             // 
-            // linkLabel1
+            // accountLink
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.2F);
-            this.linkLabel1.Location = new System.Drawing.Point(323, 418);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(132, 13);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Already have an account?";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.accountLink.AutoSize = true;
+            this.accountLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.2F);
+            this.accountLink.Location = new System.Drawing.Point(323, 418);
+            this.accountLink.Name = "accountLink";
+            this.accountLink.Size = new System.Drawing.Size(132, 13);
+            this.accountLink.TabIndex = 6;
+            this.accountLink.TabStop = true;
+            this.accountLink.Text = "Already have an account?";
             // 
             // label3
             // 
@@ -210,15 +221,14 @@
             this.loginBox.Size = new System.Drawing.Size(177, 30);
             this.loginBox.TabIndex = 1;
             // 
-            // button1
+            // registerButton
             // 
-            this.button1.Location = new System.Drawing.Point(300, 383);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Register";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.registerButton.Location = new System.Drawing.Point(300, 383);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(177, 32);
+            this.registerButton.TabIndex = 0;
+            this.registerButton.Text = "Register";
+            this.registerButton.UseVisualStyleBackColor = true;
             // 
             // emailBox
             // 
@@ -227,19 +237,6 @@
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(177, 30);
             this.emailBox.TabIndex = 2;
-            // 
-            // mainWindow
-            // 
-            this.mainWindow.AutoSize = true;
-            this.mainWindow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mainWindow.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mainWindow.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.mainWindow.Location = new System.Drawing.Point(622, 10);
-            this.mainWindow.Name = "mainWindow";
-            this.mainWindow.Size = new System.Drawing.Size(166, 26);
-            this.mainWindow.TabIndex = 18;
-            this.mainWindow.Text = "Back To Main Window";
-            this.mainWindow.Click += new System.EventHandler(this.mainWindow_Click);
             // 
             // RegistrationWindow
             // 
@@ -263,15 +260,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.TextBox surnameBox;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel accountLink;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox loginBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button registerButton;
         private System.Windows.Forms.TextBox emailBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox password2Box;
+        private System.Windows.Forms.TextBox passwordBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label warningLabel;

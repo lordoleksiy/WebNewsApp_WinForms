@@ -13,36 +13,63 @@ namespace WebNewsApp.Views
 {
     public partial class ArticleViewerWindow : Form
     {
-        public ArticleViewerWindow(ArticleViewModel article)
+        public event EventHandler backToMainWindowClicked;
+        public ArticleViewerWindow()
         {
             InitializeComponent();
-            InitializeData(article);
+            mainWindow.Click += delegate { backToMainWindowClicked?.Invoke(this, EventArgs.Empty); };
         }
 
-        private void mainWindow_Click(object sender, EventArgs e)
+        public string Header
         {
-            this.Close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            set => header.Text = value;
         }
 
-        private void InitializeData(ArticleViewModel article)
+        public string PublishedTime
         {
-            this.Header.Text = article.Header;
-            this.publishedTime.Text = article.PublishedTime.ToString();
-            this.descriptionBox.Text = article.ArticleText;
-            foreach (var tag in article.Tags)
-            {
-                this.tagListBox.Items.Add(tag.Name);
-            }
-            foreach (var category in article.Categories)
-            {
-                this.categoryListBox.Items.Add(category.Name);
-            }
-            foreach (var user in article.Authors)
-            {
-                this.authorListBox.Items.Add(user.Login);
+            set => publishedTime.Text = value;
+        }
+
+        public string Description
+        {
+            set => descriptionBox.Text = value;
+        }
+
+        public IEnumerable<string> TagList
+        {
+            set { 
+                foreach (var tag in value)
+                {
+                    tagListBox.Items.Add(tag);
+                }
             }
         }
+
+        public IEnumerable<string> Categories
+        {
+            set
+            {
+                foreach (var category in value)
+                {
+                    categoryListBox.Items.Add(category);
+                }
+            }
+        }
+
+        public IEnumerable<string> Authors
+        {
+            set
+            {
+                foreach (var author in value)
+                {
+                    authorListBox.Items.Add(author);
+                }
+            }
+        }
+
+
+
+
+        
     }
 }

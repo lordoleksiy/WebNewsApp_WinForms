@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluentValidation;
 using WebNewsApp.BLL.DTO;
+using WebNewsApp.BLL.Infrastructure;
 using WebNewsApp.BLL.Interfaces;
 using WebNewsApp.DAL.Models;
 using WebNewsApp.DAL.Repositories;
@@ -14,9 +14,11 @@ namespace WebNewsApp.BLL.Services
     public class UserManagerService : AutoMapperService, IUserManagerService
     {
         private readonly EFUnitOfWork UnitOfWork;
+        private readonly UserValidator userValidator;
         public UserManagerService(EFUnitOfWork unitOfWork)
         {
             UnitOfWork = unitOfWork;
+            userValidator = new UserValidator();
         }
         public void Delete(int id)
         {
@@ -44,6 +46,15 @@ namespace WebNewsApp.BLL.Services
             if (user == null) throw new ValidationException("No data for register!");
             var userDal = UnitOfWork.UserRepository.GetById(user.Id);
             if (userDal == null) throw new ValidationException("No such user!");
+
+            var results = userValidator.Validate(user);
+            if (!results.IsValid)
+            {
+                foreach (var error in results.Errors)
+                {
+                    throw new ValidationException("Wrong Data!", error.PropertyName);
+                }
+            }
 
             userDal.Name = user.Name;
             userDal.Surname = user.Surname;

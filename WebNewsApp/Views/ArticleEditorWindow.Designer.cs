@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.deleteLink = new System.Windows.Forms.Label();
             this.addAuthorButton = new System.Windows.Forms.Button();
             this.addTagButton = new System.Windows.Forms.Button();
             this.tagListBox = new System.Windows.Forms.ListBox();
@@ -46,14 +47,13 @@
             this.headerBox = new System.Windows.Forms.TextBox();
             this.mainWindow = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.DeleteLink = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this.DeleteLink);
+            this.panel1.Controls.Add(this.deleteLink);
             this.panel1.Controls.Add(this.addAuthorButton);
             this.panel1.Controls.Add(this.addTagButton);
             this.panel1.Controls.Add(this.tagListBox);
@@ -76,6 +76,18 @@
             this.panel1.Size = new System.Drawing.Size(800, 453);
             this.panel1.TabIndex = 4;
             // 
+            // deleteLink
+            // 
+            this.deleteLink.AutoSize = true;
+            this.deleteLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteLink.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteLink.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.deleteLink.Location = new System.Drawing.Point(9, 10);
+            this.deleteLink.Name = "deleteLink";
+            this.deleteLink.Size = new System.Drawing.Size(101, 26);
+            this.deleteLink.TabIndex = 6;
+            this.deleteLink.Text = "Delete Article";
+            // 
             // addAuthorButton
             // 
             this.addAuthorButton.Location = new System.Drawing.Point(303, 330);
@@ -84,7 +96,6 @@
             this.addAuthorButton.TabIndex = 36;
             this.addAuthorButton.Text = "Add";
             this.addAuthorButton.UseVisualStyleBackColor = true;
-            this.addAuthorButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // addTagButton
             // 
@@ -94,7 +105,6 @@
             this.addTagButton.TabIndex = 35;
             this.addTagButton.Text = "Add";
             this.addTagButton.UseVisualStyleBackColor = true;
-            this.addTagButton.Click += new System.EventHandler(this.addTagButton_Click);
             // 
             // tagListBox
             // 
@@ -106,7 +116,6 @@
             this.tagListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.tagListBox.Size = new System.Drawing.Size(177, 84);
             this.tagListBox.TabIndex = 34;
-            this.tagListBox.SelectedIndexChanged += new System.EventHandler(this.tagListBox_SelectedIndexChanged);
             // 
             // authorListBox
             // 
@@ -118,7 +127,6 @@
             this.authorListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.authorListBox.Size = new System.Drawing.Size(177, 84);
             this.authorListBox.TabIndex = 33;
-            this.authorListBox.SelectedIndexChanged += new System.EventHandler(this.authorListBox_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -165,7 +173,6 @@
             this.saveButton.TabIndex = 26;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // categoryListBox
             // 
@@ -235,7 +242,6 @@
             this.mainWindow.Size = new System.Drawing.Size(166, 26);
             this.mainWindow.TabIndex = 18;
             this.mainWindow.Text = "Back To Main Window";
-            this.mainWindow.Click += new System.EventHandler(this.mainWindow_Click);
             // 
             // label1
             // 
@@ -248,19 +254,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Web News Application";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DeleteLink
-            // 
-            this.DeleteLink.AutoSize = true;
-            this.DeleteLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeleteLink.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteLink.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.DeleteLink.Location = new System.Drawing.Point(9, 10);
-            this.DeleteLink.Name = "DeleteLink";
-            this.DeleteLink.Size = new System.Drawing.Size(101, 26);
-            this.DeleteLink.TabIndex = 6;
-            this.DeleteLink.Text = "Delete Article";
-            this.DeleteLink.Click += new System.EventHandler(this.DeleteLink_Click);
             // 
             // ArticleEditorWindow
             // 
@@ -297,6 +290,6 @@
         private System.Windows.Forms.ListBox authorListBox;
         private System.Windows.Forms.Button addAuthorButton;
         private System.Windows.Forms.Button addTagButton;
-        private System.Windows.Forms.Label DeleteLink;
+        private System.Windows.Forms.Label deleteLink;
     }
 }

@@ -82,9 +82,9 @@
     <Compile Include="Services\UserManagerService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebNewsApp.DAL\WebNewsApp.DAL.csproj">
+    <ProjectReference Include="..\WebNewsApp.DAL\WebNewsApp.DAL.MVC.csproj">
       <Project>{7234fcd7-6097-4773-9e88-6dff15a82fa7}</Project>
-      <Name>WebNewsApp.DAL</Name>
+      <Name>WebNewsApp.DAL.MVC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

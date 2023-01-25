@@ -54,7 +54,7 @@ namespace WebNewsApp.BLL.Services
             }
             foreach (var category in article.CategoryDTOs)
             {
-                var categoryDal = UnitOfWork.CategoryRepository.GetByName(category.Name);
+                var categoryDal = UnitOfWork.CategoryRepository.Find(a => a.Name.Equals(category.Name)).FirstOrDefault();
                 articleDal.Categories.Add(categoryDal);
             }
             foreach (var user in article.AuthorDTOs)
@@ -96,13 +96,30 @@ namespace WebNewsApp.BLL.Services
             }
             foreach (var category in article.CategoryDTOs)
             {
-                var categoryDal = UnitOfWork.CategoryRepository.GetByName(category.Name);
+                var categoryDal = UnitOfWork.CategoryRepository.Find(a => a.Name.Equals(category.Name)).FirstOrDefault();
                 articleDal.Categories.Add(categoryDal);
             }
             foreach (var user in article.AuthorDTOs)
             {
                 var userDal = UnitOfWork.UserRepository.GetById(user.Id);
                 articleDal.Authors.Add(userDal);
+            }
+            
+            // update all links:
+
+            foreach (var category in articleDal.Categories)
+            {
+                UnitOfWork.CategoryRepository.Update(category);  
+            }
+
+            foreach (var author in articleDal.Authors)
+            {
+                UnitOfWork.UserRepository.Update(author);
+            }
+
+            foreach (var tag in articleDal.Tags)
+            {
+                UnitOfWork.TagRepository.Update(tag);
             }
 
             UnitOfWork.ArticleRepository.Update(articleDal);

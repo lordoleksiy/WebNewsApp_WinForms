@@ -9,6 +9,7 @@ using WebNewsApp.DAL.Interfaces;
 
 namespace WebNewsApp.DAL.Repositories
 {
+    //class EFRepository<TKey,TEntity> : IRepository<TKey, TEntity> where TEntity<TKey>: class
     public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DataContext Db;

@@ -22,14 +22,17 @@ namespace WebNewsApp.BLL.Services
 
         public UserDTO Login(string login, string password)
         {
+            if (string.IsNullOrEmpty(login)) throw new ValidationException("Login is empty");
+            if (string.IsNullOrEmpty(password)) throw new ValidationException("Password is empty");
             var userDAL = UnitOfWork.UserRepository.Find(u => u.Login.Equals(login)).FirstOrDefault();
+
             if (userDAL == null) throw new ValidationException("No user with such login!");
             if (!userDAL.Password.Equals(password)) throw new ValidationException("Password is incorrect!");
             
             return UserMapper.Map<UserDTO>(userDAL);
         }
 
-        public void Register(UserDTO user)
+        public UserDTO Register(UserDTO user)
         {
             if (user == null) throw new ValidationException("No data for register!");
             var testUser = UnitOfWork.UserRepository.Find(u => u.Login.Equals(user.Login) || u.Email.Equals(user.Email)).FirstOrDefault();
@@ -39,19 +42,15 @@ namespace WebNewsApp.BLL.Services
             {
                 foreach (var error in results.Errors)
                 {
-                    throw new ValidationException("Wrong Data!", error.PropertyName);
+                    throw new ValidationException("Wrong Data", error.PropertyName);
                 }
             }
             var userDal = UserDalMapper.Map<User>(user);
             userDal.RegisterDate = DateTime.Now;
+
             UnitOfWork.UserRepository.Create(userDal);
             UnitOfWork.Save();
-        }
-
-        public UserDTO FindByLogin(string Login)
-        {
-            var user =  UnitOfWork.UserRepository.Find(u => u.Login.Equals(Login)).FirstOrDefault();
-            if (user == null) throw new ValidationException("No user found!");
+            var userDTO = UnitOfWork.UserRepository.Find(u => u.Login.Equals(user.Login)).FirstOrDefault();
             return UserMapper.Map<UserDTO>(user);
         }
     }

@@ -16,11 +16,7 @@ namespace WebNewsApp.BLL.Infrastructure
             RuleFor(x => x.Name).NotEmpty().Length(1, 20);
             RuleFor(x => x.Surname).Length(1, 20);
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
-            RuleFor(x => x.Password).NotEmpty().Length(1, 20)
-                .When(x => x.Password.Any(u => char.IsDigit(u)))
-                .When(x => x.Password.Any(u => char.IsLetter(u)));
-            
-
+            RuleFor(x => x.Password).NotNull().NotEmpty().Length(4, 20);
         }
     }
 }

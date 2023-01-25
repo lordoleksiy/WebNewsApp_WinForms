@@ -7,7 +7,7 @@ namespace WebNewsApp.DAL.Interfaces
     {
         IRepository<Article> ArticleRepository { get; }
         IRepository<User> UserRepository { get; }
-        ICategoryRepository CategoryRepository { get; }
+        IRepository<ArticleCategory> CategoryRepository { get; }
         IRepository<ArticleTag> TagRepository { get; }
         void Save();
 

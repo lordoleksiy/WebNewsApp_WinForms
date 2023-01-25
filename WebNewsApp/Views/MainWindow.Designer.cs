@@ -105,7 +105,6 @@
             this.findComboBox.Name = "findComboBox";
             this.findComboBox.Size = new System.Drawing.Size(159, 34);
             this.findComboBox.TabIndex = 10;
-            this.findComboBox.SelectedIndexChanged += new System.EventHandler(this.findComboBox_SelectedIndexChanged);
             // 
             // createButton
             // 
@@ -116,7 +115,6 @@
             this.createButton.TabIndex = 9;
             this.createButton.Text = "Create article";
             this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // newsList
             // 
@@ -135,7 +133,6 @@
             this.newsList.TabIndex = 8;
             this.newsList.UseCompatibleStateImageBehavior = false;
             this.newsList.View = System.Windows.Forms.View.Details;
-            this.newsList.SelectedIndexChanged += new System.EventHandler(this.newsList_SelectedIndexChanged);
             // 
             // Header
             // 
@@ -173,7 +170,6 @@
             this.AccountLink.Size = new System.Drawing.Size(102, 26);
             this.AccountLink.TabIndex = 4;
             this.AccountLink.Text = "Your account";
-            this.AccountLink.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -196,7 +192,6 @@
             this.searchButton.TabIndex = 25;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // resetButton
             // 
@@ -207,7 +202,6 @@
             this.resetButton.TabIndex = 26;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // dateTimeStart
             // 
@@ -256,7 +250,6 @@
             this.userArticles.TabIndex = 31;
             this.userArticles.Text = "My Articles";
             this.userArticles.UseVisualStyleBackColor = true;
-            this.userArticles.Click += new System.EventHandler(this.userArticles_Click);
             // 
             // MainWindow
             // 

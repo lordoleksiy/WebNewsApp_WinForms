@@ -10,7 +10,6 @@ namespace WebNewsApp.BLL.Interfaces
     public interface IAuthorizationService
     {
         UserDTO Login(string login, string password);
-        void Register(UserDTO user);
-        UserDTO FindByLogin(string Login);
+        UserDTO Register(UserDTO user);
     }
 }

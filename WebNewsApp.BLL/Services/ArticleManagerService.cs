@@ -41,7 +41,7 @@ namespace WebNewsApp.BLL.Services
         }
         public IEnumerable<ArticleDTO> FindByCategoryName(string categoryName)
         {
-            var category = UnitOfWork.CategoryRepository.GetByName(categoryName);
+            var category = UnitOfWork.CategoryRepository.Find(a => a.Name.Equals(categoryName)).FirstOrDefault();
             if (category == null) throw new ValidationException("No such category name");
             return ArticleMapper.Map<IEnumerable<Article>, IEnumerable<ArticleDTO>>(category.Articles);
         }

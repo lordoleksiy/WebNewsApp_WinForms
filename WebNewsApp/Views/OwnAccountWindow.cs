@@ -16,66 +16,58 @@ namespace WebNewsApp.Views
 {
     public partial class OwnAccountWindow : Form
     {
-        private static readonly UserManagerController _userManagerController;
-        static OwnAccountWindow()
-        {
-            IKernel kernel = Program.Kernel;
-            var userManagerService = kernel.Get<IUserManagerService>();
-            _userManagerController = new UserManagerController(userManagerService);
-        }
+        public event EventHandler backToMainWindowClicked;
+        public event EventHandler saveClicked;
+        public event EventHandler deleteAccountClicked;
+        public event EventHandler exitFromAccountClicked;
+
         public OwnAccountWindow()
         {
             InitializeComponent();
+            backButton.Click += delegate { backToMainWindowClicked?.Invoke(this, EventArgs.Empty); };
+            deleteLink.Click += delegate { deleteAccountClicked?.Invoke(this, EventArgs.Empty); };
+            saveButton.Click += delegate { saveClicked?.Invoke(this, EventArgs.Empty); };
+            exitLink.Click += delegate { exitFromAccountClicked?.Invoke(this, EventArgs.Empty); };
         }
-
-        private void backButton_Click(object sender, EventArgs e)
+        public string Login
         {
-            this.Close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            get => loginBox.Text;
+            set => loginBox.Text = value;
         }
-
-        private void saveButton_Click(object sender, EventArgs e)
+        public string Password
         {
-            var login = this.loginBox.Text;
-            var name = this.nameBox.Text;
-            var surname = this.surnameBox.Text;
-            var email = this.emailBox.Text;
-            var password = this.passwordBox.Text;
-            var description = this.descriptionBox.Text;
-
-            if (String.IsNullOrEmpty(login) || String.IsNullOrEmpty(email) || String.IsNullOrEmpty(name)
-                || String.IsNullOrEmpty(surname) || String.IsNullOrEmpty(password))
-            {
-                this.warningLabel.Text = "Input in all fields";
-                return;
-            }
-
-            var user = AccountController.Get();
-            using (Prompt prompt = new Prompt("Enter old password:"))
-            {
-                var result = prompt.Result;
-                if (result != null && result.Equals(user.Password))
-                {
-                    user = _userManagerController.UpdateUser(new UserViewModel()
-                    {
-                        Id = user.Id,
-                        Login = login,
-                        Name = name,
-                        Surname = surname,
-                        Email = email,
-                        Password = password,
-                        Description = description
-                    });
-                    AccountController.Set(user);
-                    this.warningLabel.Text = user.ErrorStatus != null ? user.ErrorStatus.ToString() : "Data is updated!";
-                }
-            }
+            get => this.passwordBox.Text;
+            set => this.passwordBox.Text = value;
+        }
+        public string Email
+        {
+            get => emailBox.Text;
+            set => emailBox.Text = value;
+        }
+        public string NameInput
+        {
+            get => nameBox.Text;
+            set => nameBox.Text = value;
+        }
+        public string SurnameInput
+        {
+            get => surnameBox.Text;
+            set => surnameBox.Text = value;
+        }
+        public string Description
+        {
+            get => descriptionBox.Text;
+            set => descriptionBox.Text = value;
+        }
+        public string WarningLabel
+        {
+            get => warningLabel.Text;
+            set => warningLabel.Text = value;
         }
 
         private void OwnAccountWindow_Load(object sender, EventArgs e)
         {
-            var user = AccountController.Get();
+            var user = AccountPresenter.Get();
             this.loginBox.Text = user.Login;
             this.nameBox.Text = user.Name;
             this.surnameBox.Text = user.Surname;
@@ -83,40 +75,6 @@ namespace WebNewsApp.Views
             this.passwordBox.Text = user.Password;
             this.dateBox.Text = user.RegisterDate.ToString();
             this.descriptionBox.Text = user.Description;
-        }
-
-        private void DeleteLink_Click(object sender, EventArgs e)
-        {
-            var user = AccountController.Get();
-            String res = null;
-            using (Prompt prompt = new Prompt("Enter password to delete your account:"))
-            {
-                var result = prompt.Result;
-                if (result != null && result == user.Password)
-                {
-                    res = _userManagerController.DeleteUser(user.Id);
-                    AccountController.Reset();
-                }
-            }
-
-            if (res != null)
-            {
-                this.warningLabel.Text = res;
-            }
-            else
-            {
-                this.Close();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-            }
-        }
-
-        private void exitLabel_Click(object sender, EventArgs e)
-        {
-            AccountController.Reset();
-            this.Close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
         }
     }
 }

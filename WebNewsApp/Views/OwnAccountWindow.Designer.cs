@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.exitLabel = new System.Windows.Forms.Label();
+            this.dateBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.exitLink = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
-            this.DeleteLink = new System.Windows.Forms.Label();
+            this.deleteLink = new System.Windows.Forms.Label();
             this.descriptionBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.surnameBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dateBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,9 +57,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this.dateBox);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.exitLabel);
+            this.panel1.Controls.Add(this.exitLink);
             this.panel1.Controls.Add(this.warningLabel);
-            this.panel1.Controls.Add(this.DeleteLink);
+            this.panel1.Controls.Add(this.deleteLink);
             this.panel1.Controls.Add(this.descriptionBox);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.backButton);
@@ -80,18 +80,36 @@
             this.panel1.Size = new System.Drawing.Size(800, 453);
             this.panel1.TabIndex = 4;
             // 
-            // exitLabel
+            // dateBox
             // 
-            this.exitLabel.AutoSize = true;
-            this.exitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitLabel.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.exitLabel.Location = new System.Drawing.Point(644, 39);
-            this.exitLabel.Name = "exitLabel";
-            this.exitLabel.Size = new System.Drawing.Size(133, 26);
-            this.exitLabel.TabIndex = 30;
-            this.exitLabel.Text = "Exit from account";
-            this.exitLabel.Click += new System.EventHandler(this.exitLabel_Click);
+            this.dateBox.Enabled = false;
+            this.dateBox.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateBox.Location = new System.Drawing.Point(600, 183);
+            this.dateBox.Name = "dateBox";
+            this.dateBox.Size = new System.Drawing.Size(177, 30);
+            this.dateBox.TabIndex = 32;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(439, 180);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 26);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Registration date:";
+            // 
+            // exitLink
+            // 
+            this.exitLink.AutoSize = true;
+            this.exitLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exitLink.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exitLink.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.exitLink.Location = new System.Drawing.Point(644, 39);
+            this.exitLink.Name = "exitLink";
+            this.exitLink.Size = new System.Drawing.Size(133, 26);
+            this.exitLink.TabIndex = 30;
+            this.exitLink.Text = "Exit from account";
             // 
             // warningLabel
             // 
@@ -103,18 +121,17 @@
             this.warningLabel.TabIndex = 29;
             this.warningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // DeleteLink
+            // deleteLink
             // 
-            this.DeleteLink.AutoSize = true;
-            this.DeleteLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeleteLink.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteLink.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.DeleteLink.Location = new System.Drawing.Point(644, 10);
-            this.DeleteLink.Name = "DeleteLink";
-            this.DeleteLink.Size = new System.Drawing.Size(110, 26);
-            this.DeleteLink.TabIndex = 5;
-            this.DeleteLink.Text = "Delete account";
-            this.DeleteLink.Click += new System.EventHandler(this.DeleteLink_Click);
+            this.deleteLink.AutoSize = true;
+            this.deleteLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteLink.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteLink.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.deleteLink.Location = new System.Drawing.Point(644, 10);
+            this.deleteLink.Name = "deleteLink";
+            this.deleteLink.Size = new System.Drawing.Size(110, 26);
+            this.deleteLink.TabIndex = 5;
+            this.deleteLink.Text = "Delete account";
             // 
             // descriptionBox
             // 
@@ -144,7 +161,6 @@
             this.backButton.TabIndex = 5;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // saveButton
             // 
@@ -155,7 +171,6 @@
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // label6
             // 
@@ -260,25 +275,6 @@
             this.surnameBox.Size = new System.Drawing.Size(177, 30);
             this.surnameBox.TabIndex = 20;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(439, 180);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 26);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Registration date:";
-            // 
-            // dateBox
-            // 
-            this.dateBox.Enabled = false;
-            this.dateBox.Font = new System.Drawing.Font("Sitka Banner", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateBox.Location = new System.Drawing.Point(600, 183);
-            this.dateBox.Name = "dateBox";
-            this.dateBox.Size = new System.Drawing.Size(177, 30);
-            this.dateBox.TabIndex = 32;
-            // 
             // OwnAccountWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -313,9 +309,9 @@
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox surnameBox;
-        private System.Windows.Forms.Label DeleteLink;
+        private System.Windows.Forms.Label deleteLink;
         private System.Windows.Forms.Label warningLabel;
-        private System.Windows.Forms.Label exitLabel;
+        private System.Windows.Forms.Label exitLink;
         private System.Windows.Forms.TextBox dateBox;
         private System.Windows.Forms.Label label7;
     }

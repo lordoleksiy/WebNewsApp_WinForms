@@ -7,7 +7,7 @@ using WebNewsApp.Models;
 
 namespace WebNewsApp.Controllers
 {
-    public static class AccountController
+    public static class AccountPresenter
     {
         private static UserViewModel _account;
         public static void Set(UserViewModel account)

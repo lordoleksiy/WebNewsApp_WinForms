@@ -16,54 +16,31 @@ namespace WebNewsApp.Views
 {
     public partial class AuthorizationWindow : Form
     {
-        private static readonly AuthorizationController _authorizationController;
-        
-        static AuthorizationWindow()
-        {
-            IKernel kernel = Program.Kernel;
-            var authorizationService = kernel.Get<IAuthorizationService>(); ;
-            _authorizationController = new AuthorizationController(authorizationService);
-        }
+        public event EventHandler loginButtonClicked;
+        public event EventHandler linkClicked;
+        public event EventHandler backToMainWindowClicked;
         public AuthorizationWindow()
         {  
             InitializeComponent();
+            loginButton.Click += delegate { loginButtonClicked?.Invoke(this, EventArgs.Empty); };
+            mainWindow.Click += delegate { backToMainWindowClicked?.Invoke(this, EventArgs.Empty); };
+            accountLink.Click += delegate { linkClicked?.Invoke(this, EventArgs.Empty); };
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public string LoginInput
         {
-            this.Hide();
-            RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Show();
+            get => loginInput.Text;
+            set => loginInput.Text = value;
         }
-
-        private void loginButton_Click(object sender, EventArgs e)
+        public string PasswordInput
         {
-            var login = this.loginInput.Text;
-            var pass = this.passwordInput.Text;
-            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(pass))
-            {
-                this.warningLabel.Text = "Fill in all fields";
-            }
-
-            var user = _authorizationController.LogIn(login, pass);
-            if (user.ErrorStatus != null)
-            {
-                this.warningLabel.Text = user.ErrorStatus;
-            }
-            else
-            {
-                this.Close();
-                AccountController.Set(user);
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-            }
+            get => this.passwordInput.Text;
+            set => this.passwordInput.Text = value;
         }
-
-        private void mainWindow_Click(object sender, EventArgs e)
+        public string WarningLabel
         {
-            this.Close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            get => warningLabel.Text;
+            set => warningLabel.Text = value;
         }
     }
 }
